@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ServiceService} from "./service/service.service";
 import {lastValueFrom} from "rxjs";
+import {Tourisme} from "./Tourisme";
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,9 @@ import {lastValueFrom} from "rxjs";
 })
 export class AppComponent {
   title = 'tourisme';
-  public toto: any = {ville: 'toto'};
+  public  toto?: Tourisme;
 
-  constructor(private service:ServiceService) { }
+  constructor(private service: ServiceService) { }
 
   async ngOnInit() {
     this.toto = await lastValueFrom(this.service.getConfig());

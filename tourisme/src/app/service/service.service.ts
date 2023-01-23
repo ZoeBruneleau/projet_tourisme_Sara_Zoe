@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Tourisme} from "../Tourisme";
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,7 @@ export class ServiceService {
 
   constructor(private http:HttpClient) { }
 
-  getConfig(){
-    console.log('getCOnfig');
-    return this.http.get('getTourism');
+  public getConfig() {
+    return this.http.get<Tourisme>('getTourism');
   }
 }
