@@ -9,6 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FeatureSectionComponent } from './home/feature-section/feature-section.component';
 import { CtaComponent } from './home/cta/cta.component';
+import { AccountComponent } from './account/account.component';
+import { AccountEditComponent } from './account/account-edit/account-edit.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CtaComponent } from './home/cta/cta.component';
     FooterComponent,
     HomeComponent,
     FeatureSectionComponent,
-    CtaComponent
+    CtaComponent,
+    AccountComponent,
+    AccountEditComponent
   ],
   imports: [
     BrowserModule,
