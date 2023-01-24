@@ -11,6 +11,8 @@ import { FeatureSectionComponent } from './home/feature-section/feature-section.
 import { CtaComponent } from './home/cta/cta.component';
 import { AccountComponent } from './account/account.component';
 import { AccountEditComponent } from './account/account-edit/account-edit.component';
+import {LeafletModule} from "@asymmetrik/ngx-leaflet";
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { AccountEditComponent } from './account/account-edit/account-edit.compon
     FeatureSectionComponent,
     CtaComponent,
     AccountComponent,
-    AccountEditComponent
+    AccountEditComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    LeafletModule
   ],
   providers: [],
   bootstrap: [AppComponent]
