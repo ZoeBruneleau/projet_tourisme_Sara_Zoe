@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import {HttpClient} from "@angular/common/http";
+import {Tourisme} from "../Tourisme";
 
 
 @Component({
@@ -9,21 +11,34 @@ import * as L from 'leaflet';
 })
 export class MapComponent implements OnInit {
 
-  constructor() {
+  constructor(private http:HttpClient) {
   }
   ngOnInit(): void {
 
-    const myfrugalmap = L.map('frugalmap').setView([46.227638, 2.213749], 6);
+    const myfrugalmap = L.map('frugalmap', {
+        center: [46.227638, 2.213749],
+        zoom: 6,
+      }
+    );
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: 'Carte de la France'
     }).addTo(myfrugalmap);
-
+    let DefaultIcon = L.icon({
+      iconSize: [25, 41],
+      iconAnchor: [10, 41],
+      popupAnchor: [2, -40],
+      iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
+    });
     const myIcon = L.icon({
       iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
     });
-    L.marker([50.6311634, 3.0599573], {icon: myIcon}).bindPopup('Je suis un Frugal Marqueur').addTo(myfrugalmap).openPopup();
 
+    this.http.get('getTourism').subscribe((data: any) => {
+      data.forEach((lieu: Tourisme) => {
+        L.marker([lieu.latitude, lieu.longitude], {icon: DefaultIcon}).bindPopup(lieu.name).addTo(myfrugalmap);
+      });
+    });
   }
 
 }
