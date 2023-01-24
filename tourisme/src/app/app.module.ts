@@ -7,13 +7,17 @@ import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { SubcribeComponent } from './subcribe/subcribe.component';
+import { TestSubComponent } from './test-sub/test-sub.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    SubcribeComponent,
+    TestSubComponent
   ],
   imports: [
     BrowserModule,
