@@ -1,11 +1,24 @@
-.c{
-  width : 75%;
-  position: center;
-  margin: auto;
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #57bf74;
 
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #456F05, #57bf74,#73C9B4 );
 
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right,#456F05, #57bf74,#73C9B4 );;}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
 }
-
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}
 
 .title {
   text-align: center;
@@ -27,7 +40,6 @@
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
-
 
 label{
   color :  #57bf74;
@@ -75,10 +87,3 @@ input[type="checkbox"] {
   }
 
 }
-
-section{
-  margin-bottom: 200px;
-  margin-top: 100px;
-}
-
-
