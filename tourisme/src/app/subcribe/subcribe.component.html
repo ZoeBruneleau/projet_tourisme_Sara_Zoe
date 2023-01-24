@@ -5,40 +5,63 @@
   <div class="container w-50  justify-content-center mt-5 mb-5 ">
     <div class="row">
       <div class="col-md-5 mb-3">
-        <label for="prenom" class="form-label">Prénom</label>
-        <input type="email" formControlName="prenom" class="input-text" id="prenom" placeholder="prénom" required>
-      </div>
-      <div class="col-md-5 mb-3">
         <label for="nom" class="form-label">Nom</label>
         <input type="text" formControlName="nom" class="input-text" id="nom" placeholder="nom">
       </div>
-      <div class="col-md-2 mb-3">
-        <label for="age" class="form-label">Age </label>
-        <input type="number" formControlName="age" class="input-text" id="age" min="1" placeholder="45">
+
+      <div class="col-md-4 mb-3">
+        <label for="prenom" class="form-label">Prénom</label>
+        <input type="email" formControlName="prenom" class="input-text" id="prenom" placeholder="prénom" required>
       </div>
+
+
     </div>
 
-    <div class="col-md-5 mb-3 form-check">
-      <input class="form-check-input"   formControlName="hide"  type="checkbox" value="" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Hide email
-      </label>
-    </div>
     <div class="row">
+
+
       <div class="col-md-5 mb-3" >
-        <label for="age" class="form-label">Email</label>
+        <label for="email" class="form-label">Telephone</label>
+        <input  type="number" class="input-text" id="tel" placeholder="060000000" >
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="prenom" class="form-label">Ville </label>
+        <input type="email" formControlName="ville" class="input-text" id="ville" placeholder="Paris" required>
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label for="nom" class="form-label">Code postal</label>
+        <input type="number" formControlName="cp" class="input-text" id="CP" placeholder="75005" min="1000" max="97680">
+      </div>
+
+
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-md-6 mb-3" >
+        <label for="email" class="form-label">Email</label>
         <input  class="input-text" id="email" placeholder="name@gmail.com" >
       </div>
-      <div class="col-md-5 mb-3" >
-        <label for="age" class="form-label">Mot de passe</label>
+
+      <div class="col-md-6 mb-3" >
+        <label for="mdp" class="form-label">Mot de passe</label>
         <input  type="password" class="input-text" id="mdp" placeholder="***" >
       </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Commentaires</label>
-      <textarea class="form-control" formControlName="commentaire"  id="exampleFormControlTextarea1" rows="3"></textarea>
+
+
+    <div class="col-md-10 mt-3 mb-5 form-check">
+      <input class="form-check-input"   formControlName="hide"  type="checkbox" value="" id="flexCheckDefault" >
+      <label class="form-check-label" for="flexCheckDefault">
+        J'accepte les conditions Générales d'utilisation <a href="#"> Voir CGU</a>
+      </label>
     </div>
-    <input type="submit" class="btn"  value="Envoyer"  >
+    <div class="text-center">
+    <input type="submit" class="btn"  value="Inscription"  >
+    </div>
   </div>
 
 
