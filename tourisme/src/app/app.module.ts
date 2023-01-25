@@ -13,6 +13,9 @@ import { AccountComponent } from './account/account.component';
 import { AccountEditComponent } from './account/account-edit/account-edit.component';
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import { MapComponent } from './map/map.component';
+import { ListeLieuComponent } from './liste-lieu/liste-lieu.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,17 @@ import { MapComponent } from './map/map.component';
     CtaComponent,
     AccountComponent,
     AccountEditComponent,
-    MapComponent
+    MapComponent,
+    ListeLieuComponent,
+    LieuDetailComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    LeafletModule
+    LeafletModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
