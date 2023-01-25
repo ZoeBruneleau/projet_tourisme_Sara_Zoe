@@ -1,40 +1,38 @@
 <div class="bg-light py-5 mt-4">
   <div class="contenu mx-auto py-2 w-75">
-    <form class="form-goup contact-form ">
+    <form class="form-goup " [formGroup]="subcribeForm" >
 
       <h1 class="title ">Inscription</h1>
       <div class="container w-75  justify-content-center mt-5 mb-5 ">
         <div class="row">
           <div class="col-md-5 mb-3">
-            <label for="nom" class="form-label">Nom</label>
-            <input type="text" formControlName="nom" class="input-text" id="nom" placeholder="nom">
+            <label for="nom" class="form-label">Nom*</label>
+            <input type="text" formControlName="nom" class="input-text" id="nom" placeholder="nom" required>
           </div>
+
 
           <div class="col-md-4 mb-3">
-            <label for="prenom" class="form-label">Prénom</label>
+            <label for="prenom" class="form-label">Prénom*</label>
             <input type="email" formControlName="prenom" class="input-text" id="prenom" placeholder="prénom" required>
           </div>
-
-
         </div>
 
         <div class="row">
 
-
           <div class="col-md-5 mb-3">
             <label for="email" class="form-label">Telephone</label>
-            <input type="number" class="input-text" id="tel" placeholder="060000000">
+            <input type="number" formControlName="tel" class="input-text" id="tel" placeholder="060000000">
           </div>
 
           <div class="col-md-4 mb-3">
-            <label for="prenom" class="form-label">Ville </label>
+            <label for="prenom" class="form-label">Ville*</label>
             <input type="email" formControlName="ville" class="input-text" id="ville" placeholder="Paris" required>
           </div>
 
           <div class="col-md-3 mb-3">
-            <label for="nom" class="form-label">Code postal</label>
+            <label for="nom" class="form-label">Code postal*</label>
             <input type="number" formControlName="cp" class="input-text" id="CP" placeholder="75005" min="1000"
-                   max="97680">
+                   max="97680" required>
           </div>
 
 
@@ -44,27 +42,35 @@
         <div class="row">
 
           <div class="col-md-6 mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input class="input-text" id="email" placeholder="name@gmail.com">
+            <label for="email" class="form-label">Email*</label>
+            <input class="input-text" formControlName="mail" id="email" placeholder="name@gmail.com" required>
           </div>
 
           <div class="col-md-6 mb-3">
-            <label for="mdp" class="form-label">Mot de passe</label>
-            <input type="password" class="input-text" id="mdp" placeholder="***">
+            <label for="mdp" class="form-label">Mot de passe*</label>
+            <input type="password" formControlName="mdp" class="input-text" id="mdp" placeholder="***" required>
           </div>
         </div>
 
+        <div class="col-md-6 mb-3">
+          <label for="mdp" class="form-label">Vérifier le Mot de passe*</label>
+          <input type="password" formControlName="mdp2" class="input-text" id="mdp2" placeholder="***" required>
+        </div>
+
+
 
         <div class="col-md-10 mt-3 mb-5 form-check">
-          <input class="form-check-input" formControlName="hide" type="checkbox" value="" id="flexCheckDefault">
+          <input class="form-check-input" formControlName="cgu" type="checkbox" value="" id="flexCheckDefault" ngModel required>
           <label class="form-check-label" for="flexCheckDefault">
-            J'accepte les conditions Générales d'utilisation <a href="#"> Voir CGU</a>
+            J'accepte les conditions Générales d'utilisation* <a class="cgu" href="#"> Voir CGU</a>
           </label>
         </div>
         <div class="text-center">
-          <input type="submit" class="btn" value="Inscription">
+          <input  [disabled]="subcribeForm.invalid" type="submit" class="btn" value="Inscription">
         </div>
       </div>
+
+
 
 
     </form>

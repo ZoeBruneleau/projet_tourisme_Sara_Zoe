@@ -8,8 +8,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { SubcribeComponent } from './subcribe/subcribe.component';
-import { TestSubComponent } from './test-sub/test-sub.component';
 import { LoginComponent } from './login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,13 +18,13 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     HomeComponent,
     SubcribeComponent,
-    TestSubComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

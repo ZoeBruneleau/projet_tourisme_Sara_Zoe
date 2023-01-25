@@ -1,11 +1,9 @@
-.c{
-  width : 75%;
-  position: center;
-  margin: auto;
 
+.cgu{
+  color :  #57bf74;
+  font-weight: bold;
 
 }
-
 
 .title {
   text-align: center;
@@ -68,7 +66,7 @@ textarea{
 }
 
 input[type="checkbox"] {
-  border-color: #57bf74;;
+  border-color: #57bf74;
   &:checked {
     border: none;
     background-color: var(--color-primary, #57bf74);
