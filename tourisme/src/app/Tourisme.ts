@@ -4,4 +4,11 @@ export class Tourisme {
   longitude!: number;
   latitude!: number;
 
+  image!: string;
+
+  comment!: string;
+
+  wiki!: string;
+
+
 }
