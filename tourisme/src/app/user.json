@@ -1,7 +1,11 @@
 {
-  "id" : 1,
-  "name" : "Stephane",
-  "firstName" : "Mo",
-  "mdp" : "123",
-  "mail" : "S@gmail.com"
+
+    "id": 1,
+    "name": "Stephane",
+    "firstName": "Mo",
+    "mdp": "123",
+    "mail": "S@gmail.com"
+
+
+
 }

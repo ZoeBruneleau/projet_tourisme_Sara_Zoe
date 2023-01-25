@@ -26,18 +26,19 @@ export class LoginComponent implements OnInit {
     mdp: new FormControl('', Validators.required)
   })
 
-  public id : string = "";
+  public id? : number ;
   public mdp : string = "";
   public mail : string = "";
   public isConnected : boolean = false;
 
   public login() {
-    if (this.toto.mail === this.loginForm.get('mail')?.value as string ){
-      alert("OK");
+    if (this.toto.mail === this.loginForm.get('mail')?.value as string &&  this.toto.mdp === this.loginForm.get('mdp')?.value as string ){
+      alert("Connexion réussie");
       this.isConnected = true;
+      this.id = this.toto.id;
 
     } else {
-      alert("not ok");
+      alert("mdp ou adresse mail incorecte(s)");
       // erreur pas le bon mdp ou mail
     }
   }
