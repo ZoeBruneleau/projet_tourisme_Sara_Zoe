@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-subcribe',
@@ -8,7 +10,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class SubcribeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private service:UserService) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +28,21 @@ export class SubcribeComponent implements OnInit {
   })
 
 
-  private mdp : string = "";
-  private mdp2 : string = "";
+  public mdp : string = "";
+  public mdp2 : string = "";
+
+  save(){
+
+    if (this.mdp != this.mdp2){
+      alert("Veuillez entrez des mot de passe identiques");
+
+    }
+     else {
+      alert(this.subcribeForm.value);
+      console.log(this.subcribeForm.value);
+      this.router.navigate(['/home']);
+    }
+
+  }
 
 }

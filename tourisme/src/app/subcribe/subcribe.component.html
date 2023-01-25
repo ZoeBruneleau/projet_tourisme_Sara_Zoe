@@ -1,6 +1,6 @@
 <div class="bg-light py-5 mt-4">
   <div class="contenu mx-auto py-2 w-75">
-    <form class="form-goup " [formGroup]="subcribeForm" >
+    <form class="form-goup " [formGroup]="subcribeForm" (ngSubmit)="save()" >
 
       <h1 class="title ">Inscription</h1>
       <div class="container w-75  justify-content-center mt-5 mb-5 ">
@@ -48,13 +48,13 @@
 
           <div class="col-md-6 mb-3">
             <label for="mdp" class="form-label">Mot de passe*</label>
-            <input type="password" formControlName="mdp" class="input-text" id="mdp" placeholder="***" required>
+            <input type="password" [(ngModel)]="mdp" formControlName="mdp" class="input-text" id="mdp" placeholder="***" required>
           </div>
         </div>
 
         <div class="col-md-6 mb-3">
           <label for="mdp" class="form-label">Vérifier le Mot de passe*</label>
-          <input type="password" formControlName="mdp2" class="input-text" id="mdp2" placeholder="***" required>
+          <input type="password" [(ngModel)]="mdp2"  formControlName="mdp2" class="input-text" id="mdp2" placeholder="***" required>
         </div>
 
 
