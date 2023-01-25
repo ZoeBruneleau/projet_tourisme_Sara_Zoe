@@ -8,14 +8,6 @@ import {ServiceService} from "./service/service.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tourisme';
-  public toto : any ;
 
-  constructor(private service:ServiceService) { }
-
-  ngOnInit(): void {
-    this.toto = this.service.getConfig();
-    console.log(this.toto);
-  }
 
 }
