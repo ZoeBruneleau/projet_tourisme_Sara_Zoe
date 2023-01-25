@@ -2,7 +2,7 @@
   <div class="w-75 mx-auto py-5 container">
   <div class="card-group row row-cols-3">
 
-    <div *ngFor=" let data of lieu| async " class="col">
+    <div *ngFor=" let data of lieu " class="col">
     <div  class="card m-3">
       <a class="not_a" href="/list_lieu/{{data.id}}">
         <img class="card-img-top" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
@@ -14,6 +14,8 @@
       </a>
     </div>
     </div>
+
+
   </div>
    <!--
    | paginate: { itemsPerPage: 10, currentPage: p }

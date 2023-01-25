@@ -10,13 +10,15 @@ import {lastValueFrom, Observable} from "rxjs";
 })
 export class ListeLieuComponent implements OnInit {
 
-  public lieu?:Observable<Tourisme[]>;
+  public lieu?:Tourisme[];
 
   constructor(private service: ServiceService) { }
   p: number = 1;
-  async ngOnInit() {
-    this.lieu = this.service.getConfig();
-    console.log(this.lieu);
+  ngOnInit() {
+  this.service.getConfig().subscribe((res) => {
+    this.lieu = res;
+  console.log(this.lieu);
+  });
   }
 
 }

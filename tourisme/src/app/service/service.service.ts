@@ -3,13 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {Tourisme} from "../Tourisme";
 import {DomUtil} from "leaflet";
 import get = DomUtil.get;
+import {filter} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
 
-  private lieu =this.getConfig()
+  private list_lieu =this.getConfig()
   constructor(private http:HttpClient) { }
 
 
@@ -19,7 +20,7 @@ export class ServiceService {
     return this.http.get<Tourisme[]>(this.configUrl);
   }
 
-  public getLieu(){
+  public getLieu(id: number){
   }
 }
 
