@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
       alert("Connexion réussie");
       this.isConnected = true;
       this.id = this.toto.id;
+      //rediriger compte clint + info CC ou id
 
     } else {
       alert("mdp ou adresse mail incorecte(s)");
