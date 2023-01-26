@@ -11,10 +11,18 @@ export class UserService {
 
   public userEmail!: string;
 
+  public listUser? : User[];
+
   configUrl = "getUser"
 
   getUserConfig(){
     console.log('user');
-    return this.http.get<User>(this.configUrl)
+    return this.http.get<User[]>(this.configUrl)
+  }
+
+  public getListUser() {
+    return this.getUserConfig().subscribe((res) => {
+      this.listUser = res;
+    })
   }
 }

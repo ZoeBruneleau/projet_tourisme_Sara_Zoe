@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../service/user.service";
 import {User} from "../User";
-import {lastValueFrom} from "rxjs";
+import {lastValueFrom, Observable} from "rxjs";
 import {ServiceService} from "../service/service.service";
 
 @Component({
@@ -15,11 +15,25 @@ export class LoginComponent implements OnInit {
 
   public toto!: User;
 
-  constructor(private router: Router, private serviceUser:UserService) { }
+  public user! : User[];
+  public userPairs! : [{mail: string,mdp : string }];
 
-  async ngOnInit() {
-    this.toto = await lastValueFrom(this.serviceUser.getUserConfig());
+
+  constructor(private router: Router, private serviceUser:UserService) {
+    this.serviceUser.getUserConfig()
+      .subscribe((user) => {
+        this.user= user;
+  })
+
   }
+
+  ngOnInit(): void {
+        throw new Error('Method not implemented.');
+    }
+
+  /*async ngOnInit() {
+    this.toto = await lastValueFrom(this.serviceUser.getUserConfig());
+  }*/
 
   public loginForm = new FormGroup({
     mail: new FormControl('', Validators.required),
@@ -32,7 +46,7 @@ export class LoginComponent implements OnInit {
   public isConnected : boolean = false;
 
   public login() {
-    if (this.toto.mail === this.loginForm.get('mail')?.value as string &&  this.toto.mdp === this.loginForm.get('mdp')?.value as string ){
+   /* if (this.toto.mail === this.loginForm.get('mail')?.value as string &&  this.toto.mdp === this.loginForm.get('mdp')?.value as string ){
       alert("Connexion réussie");
       this.isConnected = true;
       this.id = this.toto.id;
@@ -41,6 +55,8 @@ export class LoginComponent implements OnInit {
     } else {
       alert("mdp ou adresse mail incorecte(s)");
       // erreur pas le bon mdp ou mail
-    }
+    } */
+
+
   }
 }
