@@ -14,8 +14,10 @@ import {ServiceService} from "../service/service.service";
 export class LoginComponent implements OnInit {
 
   public toto!: User;
-
+  public mails! : string[];
   public user! : User[];
+  public userTempConnected! : User[];
+  public userConnected! : User;
   public userPairs! : [{mail: string,mdp : string }];
 
 
@@ -25,7 +27,23 @@ export class LoginComponent implements OnInit {
         this.user= user;
   })
 
+
+
   }
+
+
+
+getUserByMail(m:string){
+
+  this.serviceUser.getUserConfig()
+    .subscribe((res) => {
+      this.user = res.filter((todo: User)=> {
+        todo.mail === m;
+      });
+    });
+  return this.userTempConnected[0];
+  }
+
 
   ngOnInit(): void {
         throw new Error('Method not implemented.');
@@ -44,9 +62,15 @@ export class LoginComponent implements OnInit {
   public mdp : string = "";
   public mail : string = "";
   public isConnected : boolean = false;
+  private currlogmail= "";
 
   public login() {
-   /* if (this.toto.mail === this.loginForm.get('mail')?.value as string &&  this.toto.mdp === this.loginForm.get('mdp')?.value as string ){
+    if (! this.loginForm.get('mail')){
+      this.currlogmail = "";
+    }
+    console.log(this.currlogmail);
+  let currUser = this.getUserByMail(this.currlogmail);
+   if (currUser.mail === this.loginForm.get('mail')?.value as string &&  this.toto.mdp === this.loginForm.get('mdp')?.value as string ){
       alert("Connexion réussie");
       this.isConnected = true;
       this.id = this.toto.id;
@@ -55,7 +79,7 @@ export class LoginComponent implements OnInit {
     } else {
       alert("mdp ou adresse mail incorecte(s)");
       // erreur pas le bon mdp ou mail
-    } */
+    }
 
 
   }
