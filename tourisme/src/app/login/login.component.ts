@@ -37,7 +37,7 @@ getUserByMail(m:string){
 
   this.serviceUser.getUserConfig()
     .subscribe((res) => {
-      this.user = res.filter((todo: User)=> {
+      this.userTempConnected = res.filter((todo: User)=> {
         todo.mail === m;
       });
     });
