@@ -13,11 +13,11 @@ export class UserService {
 
   public listUser? : User[];
 
-  configUrl = "getUser"
+
 
   getUserConfig(){
     console.log('user');
-    return this.http.get<User[]>(this.configUrl)
+    return this.http.get<User[]>("/getUser")
   }
 
   public getListUser() {

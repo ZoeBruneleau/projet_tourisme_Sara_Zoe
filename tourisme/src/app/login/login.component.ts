@@ -15,38 +15,36 @@ export class LoginComponent implements OnInit {
 
   public toto!: User;
   public mails! : string[];
-  public user! : User[];
+  public user :User[] =[];
   public userTempConnected! : User[];
   public userConnected! : User;
   public userPairs! : [{mail: string,mdp : string }];
 
 
-  constructor(private router: Router, private serviceUser:UserService) {
+  constructor( private serviceUser:UserService) {
     this.serviceUser.getUserConfig()
       .subscribe((user) => {
         this.user= user;
   })
 
 
-
   }
 
 
+   /*
+    getUserByMail(m:string) {
 
-getUserByMail(m:string){
+      this.serviceUser.getUserConfig()
+        .subscribe((res) => {
+          this.userTempConnected = res.filter((todo: User)=> todo.mail === m);
+        });
 
-  this.serviceUser.getUserConfig()
-    .subscribe((res) => {
-      this.userTempConnected = res.filter((todo: User)=> {
-        todo.mail === m;
-      });
-    });
-  return this.userTempConnected[0];
-  }
+      return this.userTempConnected[0];
+    }*/
 
 
-  ngOnInit(): void {
-        throw new Error('Method not implemented.');
+  ngOnInit() {
+
     }
 
   /*async ngOnInit() {
@@ -65,12 +63,10 @@ getUserByMail(m:string){
   private currlogmail= "";
 
   public login() {
-    if (! this.loginForm.get('mail')){
-      this.currlogmail = "";
-    }
-    console.log(this.currlogmail);
-  let currUser = this.getUserByMail(this.currlogmail);
-   if (currUser.mail === this.loginForm.get('mail')?.value as string &&  this.toto.mdp === this.loginForm.get('mdp')?.value as string ){
+
+    alert(this.loginForm.get('mail'));
+  /*let currUser = this.userTempConnected[0];
+   if (currUser.mail === this.loginForm.get('mail')?.value as string &&  currUser.mdp === this.loginForm.get('mdp')?.value as string ){
       alert("Connexion réussie");
       this.isConnected = true;
       this.id = this.toto.id;
@@ -79,7 +75,7 @@ getUserByMail(m:string){
     } else {
       alert("mdp ou adresse mail incorecte(s)");
       // erreur pas le bon mdp ou mail
-    }
+    }*/
 
 
   }
