@@ -4,7 +4,7 @@
 
     <div *ngFor=" let data of lieu " class="col">
     <div  class="card m-3">
-      <a class="not_a" href="/list_lieu/{{data.id}}">
+      <a class="not_a" href="/lieu/{{data.id}}/">
         <img class="card-img-top" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{data.name}}</h5>
@@ -18,8 +18,8 @@
 
   </div>
    <!--
-   | paginate: { itemsPerPage: 10, currentPage: p }
-   <pagination-controls (pageChange)="p = $event"></pagination-controls>
+   | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
    -->
 
   </div>

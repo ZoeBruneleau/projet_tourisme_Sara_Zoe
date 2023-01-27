@@ -13,5 +13,10 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "paths": {
+    "@angular/*": [
+      "./node_modules/@angular/*"
+    ],
+  }
 }

@@ -1,1 +1,54 @@
-<p>lieu-detail works!</p>
+<section class="py-20 overflow-hidden my-4" *ngIf="lieu_list" >
+  <div class="container my-4" *ngFor=" let lieu of lieu_list">
+    <div class="row mb-24">
+      <div class="col-12 col-md-6 mb-8 mb-md-0">
+        <div class="position-relative mb-10" style="height: 564px;">
+          <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+        </div>
+        <div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="ps-lg-20">
+          <div class="mb-10 pb-10 border-bottom">
+            <span class="text-secondary">Brille</span>
+            <h1 class="mt-2 mb-6 mw-xl">{{lieu.name}}</h1>
+
+            <div class="mb-8 d-flex">
+              <div *ngFor=" let data of [1,2,3,4,5] " class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+              </svg>
+              </div>
+
+            </div>
+
+            <p class="mw-md pt-2 text-secondary">Maecenas commodo libero ut molestie dictum. Morbi placerat eros id porttitor sagittis.</p>
+          </div>
+          <div class="row mb-14 mt-4">
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0"><a class="btn w-50 btn_green" href="#">Ajouter un commentaire</a></div>
+            <div class="col-12 col-xl-4">
+              <a class="h-100 ms-auto ms-sm-0 flex-shrink-0 d-inline-flex me-4 align-items-center justify-content-center rounded-2 border" href="#" style="width: 64px; min-height: 52px;">
+                <svg width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" class="color-danger">
+                  <path d="M13.4993 26.2061L4.70067 16.9253C3.9281 16.1443 3.41815 15.1374 3.24307 14.0471C3.06798 12.9568 3.23664 11.8385 3.72514 10.8505V10.8505C4.09415 10.1046 4.63318 9.45803 5.29779 8.96406C5.96241 8.47008 6.73359 8.14284 7.54782 8.00931C8.36204 7.87578 9.19599 7.93978 9.98095 8.19603C10.7659 8.45228 11.4794 8.89345 12.0627 9.48319L13.4993 10.9358L14.9359 9.48319C15.5192 8.89345 16.2327 8.45228 17.0177 8.19603C17.8026 7.93978 18.6366 7.87578 19.4508 8.00931C20.265 8.14284 21.0362 8.47008 21.7008 8.96406C22.3654 9.45803 22.9045 10.1046 23.2735 10.8505V10.8505C23.762 11.8385 23.9306 12.9568 23.7556 14.0471C23.5805 15.1374 23.0705 16.1443 22.298 16.9253L13.4993 26.2061Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <p class="me-8 mb-0 text-secondary fw-bold text-uppercase">Liste des commentaires</p>
+            <a class="me-1" href="#" style="width: 32px; height: 32px;">
+              <img class="img-fluid" src="yofte-assets/buttons/facebook-circle.svg" alt="">
+            </a>
+            <a class="me-1" href="#" style="width: 32px; height: 32px;">
+              <img class="img-fluid" src="yofte-assets/buttons/instagram-circle.svg" alt="">
+            </a>
+            <a href="#" style="width: 32px; height: 32px;">
+              <img class="img-fluid" src="yofte-assets/buttons/twitter-circle.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

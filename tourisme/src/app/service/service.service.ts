@@ -9,19 +9,41 @@ import {filter} from "rxjs";
   providedIn: 'root'
 })
 export class ServiceService {
-
-  private list_lieu =this.getConfig()
   constructor(private http:HttpClient) { }
-
-
-  configUrl = "getTourism"
+  public list_lieu?:Tourisme[];
 
   public getConfig() {
-    return this.http.get<Tourisme[]>(this.configUrl);
+    return this.http.get<Tourisme[]>("/getTourism");
   }
 
-  public getLieu(id: number){
+
+  public getAllLieu():Tourisme[] | undefined {
+    this.getConfig()
+      .subscribe((res) => {
+      this.list_lieu = res;
+    })
+
+    return this.list_lieu
+  }
+
+  public getLieu(id: string | null){
+    for (let lieu in this.getConfig()){
+      console.log("lieu")
+      console.log(lieu)
+    }
+
+
+    this.getConfig()
+      .subscribe((res) => {
+        this.list_lieu = res.filter((todo: Tourisme)=> {
+          todo.id == Number(id);
+        });
+      });
+    console.log("getLieu")
+    console.log(Number(id))
+    return(this.list_lieu)
   }
 }
+
 
 

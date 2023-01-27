@@ -1,3 +1,4 @@
+import {NgxPaginationModule} from "ngx-pagination";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +15,6 @@ import { AccountEditComponent } from './account/account-edit/account-edit.compon
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import { MapComponent } from './map/map.component';
 import { ListeLieuComponent } from './liste-lieu/liste-lieu.component';
-import {NgxPaginationModule} from "ngx-pagination";
 import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.component';
 
 @NgModule({
@@ -34,10 +34,10 @@ import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.compon
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     AppRoutingModule,
     HttpClientModule,
     LeafletModule,
-    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,11 +12,9 @@ const routes: Routes = [
   { path : 'account', component: AccountComponent },
   { path : 'account_edit', component: AccountEditComponent },
   { path : 'map', component: MapComponent },
-  { path : 'list_lieu', component: ListeLieuComponent , children: [
-     { path: ':id', component: LieuDetailComponent },
-
-    ]},
-];
+  { path : 'list_lieu', component: ListeLieuComponent },
+  { path : 'lieu/:id', component: LieuDetailComponent },
+  ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
