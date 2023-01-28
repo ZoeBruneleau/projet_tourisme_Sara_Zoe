@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ServiceService} from "./service/service.service";
+import {Tourisme} from "./Tourisme";
+import {lastValueFrom, Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import {ServiceService} from "./service/service.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
 
 
 }

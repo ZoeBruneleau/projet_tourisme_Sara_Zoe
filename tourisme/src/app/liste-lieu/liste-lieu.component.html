@@ -1,0 +1,26 @@
+<div class="mt-4 bg-light" *ngIf="lieu">
+  <div class="w-75 mx-auto py-5 container">
+  <div class="card-group row row-cols-3">
+
+    <div *ngFor=" let data of lieu " class="col">
+    <div  class="card m-3">
+      <a class="not_a" href="/lieu/{{data.id}}/">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{data.name}}</h5>
+          <p class="card-text black">{{data.comment}}</p>
+          <p class="card-text"><small class="text-muted"><a class="black" href="{{data.wiki}}" >Wikipédia</a></small></p>
+        </div>
+      </a>
+    </div>
+    </div>
+
+
+  </div>
+   <!--
+   | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total }
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+   -->
+
+  </div>
+</div>
