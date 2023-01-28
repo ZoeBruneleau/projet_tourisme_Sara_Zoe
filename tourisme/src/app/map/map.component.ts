@@ -38,7 +38,7 @@ export class MapComponent implements OnInit {
     this.http.get('getTourism').subscribe((data: any) => {
       data.forEach((lieu: Tourisme) => {
         L.marker([lieu.latitude, lieu.longitude], {icon: DefaultIcon})
-          .bindPopup('<a title="' + lieu.name + '" href=""> <img style="width: 100px" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" /></a><br> <b>'
+          .bindPopup('<a title="' + lieu.name + '" href="/lieu/'+lieu.id+'/"> <img style="width: 100px" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" /></a><br> <b>'
             + lieu.name  +' </b> <br> <i>' +  lieu.comment + "</i><br /><a href='" + lieu.wiki + "' >Wikipédia</a>"
         ).addTo(myfrugalmap);
       });

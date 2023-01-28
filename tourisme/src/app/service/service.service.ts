@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Tourisme} from "../Tourisme";
 import {DomUtil} from "leaflet";
 import get = DomUtil.get;
-import {filter} from "rxjs";
+import {filter, Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +16,16 @@ export class ServiceService {
     return this.http.get<Tourisme[]>("/getTourism");
   }
 
+  public addTodo(newlieu: Tourisme): Observable<number> {
+    return this.http.post<number>('/getTourism', newlieu);
+  }
+
 
   public getAllLieu():Tourisme[] | undefined {
     this.getConfig()
       .subscribe((res) => {
       this.list_lieu = res;
     })
-
     return this.list_lieu
   }
 

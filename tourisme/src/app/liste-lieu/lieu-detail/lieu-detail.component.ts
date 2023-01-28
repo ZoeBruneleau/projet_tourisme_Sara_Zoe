@@ -14,6 +14,8 @@ export class LieuDetailComponent implements OnInit {
   public id?: string | null =""
   public lieu_list: Tourisme[] | undefined
   lieu: Tourisme | undefined
+
+  //newlieu: Tourisme = {comment: "comment", image: "image", latitude: 0, longitude: 0, name: "testlieu", wiki: "", id:800}
   constructor(private route: ActivatedRoute, private service: ServiceService) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.service.getConfig()
@@ -21,6 +23,9 @@ export class LieuDetailComponent implements OnInit {
         this.lieu_list = res.filter((todo: Tourisme)=> todo.id === Number(this.id));
       });
 
+   // let id = this.service.addTodo(this.newlieu)
+    //console.log("id")
+    //console.log(id)
   }
   ngOnInit() {
   }
