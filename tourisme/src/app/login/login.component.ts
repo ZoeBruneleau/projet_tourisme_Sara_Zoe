@@ -13,59 +13,53 @@ import {ServiceService} from "../service/service.service";
 })
 export class LoginComponent implements OnInit {
 
-  public toto!: User;
-  public mails! : string[];
   public user :User[] =[];
-  public userTempConnected! : User[];
-  public userConnected! : User;
-  public userPairs! : [{mail: string,mdp : string }];
+  public userListConnected! : User[];
+
+  public id? : number ;
+  public mdp : string = "";
+  public mail : string = "";
 
 
   constructor( private serviceUser:UserService) {
     this.serviceUser.getUserConfig()
       .subscribe((user) => {
         this.user= user;
-  })
-
-
+      })
   }
-
-
-   /*
-    getUserByMail(m:string) {
-
-      this.serviceUser.getUserConfig()
-        .subscribe((res) => {
-          this.userTempConnected = res.filter((todo: User)=> todo.mail === m);
-        });
-
-      return this.userTempConnected[0];
-    }*/
-
 
   ngOnInit() {
 
     }
-
-  /*async ngOnInit() {
-    this.toto = await lastValueFrom(this.serviceUser.getUserConfig());
-  }*/
 
   public loginForm = new FormGroup({
     mail: new FormControl('', Validators.required),
     mdp: new FormControl('', Validators.required)
   })
 
-  public id? : number ;
-  public mdp : string = "";
-  public mail : string = "";
+  public login() {
+    let mail = this.loginForm.get('mail')
+    alert(mail);
+    console.log(String(mail))
+    this.serviceUser.getUserConfig()
+      .subscribe((res) => {
+        this.userListConnected = res.filter((todo: User)=> todo.mail == mail?.value);
+        console.log(this.userListConnected)
+      });
+
+  /*
   public isConnected : boolean = false;
   private currlogmail= "";
+  public userTempConnected! : User[];
+  public userConnected! : User;
+  public userPairs! : [{mail: string,mdp : string }];
 
-  public login() {
 
-    alert(this.loginForm.get('mail'));
-  /*let currUser = this.userTempConnected[0];
+  public toto!: User;
+  public mails! : string[];
+
+
+  let currUser = this.userTempConnected[0];
    if (currUser.mail === this.loginForm.get('mail')?.value as string &&  currUser.mdp === this.loginForm.get('mdp')?.value as string ){
       alert("Connexion réussie");
       this.isConnected = true;
@@ -75,8 +69,11 @@ export class LoginComponent implements OnInit {
     } else {
       alert("mdp ou adresse mail incorecte(s)");
       // erreur pas le bon mdp ou mail
-    }*/
+    }
 
+    async ngOnInit() {
+      this.toto = await lastValueFrom(this.serviceUser.getUserConfig());
+    }*/
 
   }
 }

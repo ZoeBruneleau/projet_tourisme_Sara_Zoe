@@ -1,3 +1,11 @@
+<div  *ngIf="userListConnected" >
+  <div *ngFor=" let user of userListConnected">
+    {{user.id}}
+    {{user.mail}}
+    {{user.name}}
+    {{user.firstname}}
+  </div>
+</div>
 <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -56,9 +64,4 @@
       </div>
     </div>
   </div>
-    <div *ngFor=" let data of (user)" class="col">
-
-      <p> {{data.mail}}</p>
-      </div>
-
 </section>
