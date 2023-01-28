@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import {HttpClient} from "@angular/common/http";
 import {Tourisme} from "../Tourisme";
-import {CtaComponent} from "../home/cta/cta.component";
-
 
 @Component({
   selector: 'app-map',
