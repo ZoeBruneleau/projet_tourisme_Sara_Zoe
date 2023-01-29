@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   public user :User[] =[];
   public userListConnected! : User[];
+  public currUser! : User;
+  public isConnected : boolean = false;
 
   public id? : number ;
   public mdp : string = "";
@@ -38,42 +40,34 @@ export class LoginComponent implements OnInit {
   })
 
   public login() {
-    let mail = this.loginForm.get('mail')
-    alert(mail);
-    console.log(String(mail))
+    let mail = this.loginForm.get('mail')?.value as string
+    console.log(mail)
     this.serviceUser.getUserConfig()
       .subscribe((res) => {
-        this.userListConnected = res.filter((todo: User)=> todo.mail == mail?.value);
-        console.log(this.userListConnected)
+        this.userListConnected = res.filter((todo: User) => todo.mail == this.loginForm.get('mail')?.value);
       });
-
-  /*
-  public isConnected : boolean = false;
-  private currlogmail= "";
-  public userTempConnected! : User[];
-  public userConnected! : User;
-  public userPairs! : [{mail: string,mdp : string }];
-
-
-  public toto!: User;
-  public mails! : string[];
-
-
-  let currUser = this.userTempConnected[0];
-   if (currUser.mail === this.loginForm.get('mail')?.value as string &&  currUser.mdp === this.loginForm.get('mdp')?.value as string ){
-      alert("Connexion réussie");
-      this.isConnected = true;
-      this.id = this.toto.id;
-      //rediriger compte clint + info CC ou id
-
-    } else {
-      alert("mdp ou adresse mail incorecte(s)");
-      // erreur pas le bon mdp ou mail
+    if ( this.userListConnected[0] != undefined ){
+      this.currUser = this.userListConnected[0];
+      this.checkMail(mail);
+    }
+    else{
+      alert("adresse mail non reconnue");
     }
 
-    async ngOnInit() {
-      this.toto = await lastValueFrom(this.serviceUser.getUserConfig());
-    }*/
+  }
+
+  public checkMail(m:string) {
+      if (this.currUser.mail === this.loginForm.get('mail')?.value as string && this.currUser.mdp === this.loginForm.get('mdp')?.value as string) {
+        alert("Connexion réussie");
+        this.isConnected = true;
+        //rediriger compte clint + info CC ou id
+
+      } else {
+        alert("mdp ou adresse mail incorecte(s)");
+        // erreur pas le bon mdp ou mail
+      }
 
   }
+
+
 }
