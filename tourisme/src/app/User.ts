@@ -1,11 +1,11 @@
 export interface User{
   id: number;
   name: string;
-  firstname: string;
+  firstName: string;
   mdp: string;
   mail: string;
+  ville: string;
+  CP: number;
 }
 
-/* this.userTempConnected = this.user.filter(u => u.mail ===m)
 
-  return this.userTempConnected[0];*/

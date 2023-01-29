@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../service/user.service";
@@ -13,15 +13,18 @@ import {ServiceService} from "../service/service.service";
 })
 export class LoginComponent implements OnInit {
 
+
   public user :User[] =[];
   public userListConnected! : User[];
+  public currUser! : User;
+  public isConnected : boolean = false;
 
   public id? : number ;
   public mdp : string = "";
   public mail : string = "";
 
 
-  constructor( private serviceUser:UserService) {
+  constructor( private router: Router ,private serviceUser:UserService) {
     this.serviceUser.getUserConfig()
       .subscribe((user) => {
         this.user= user;
@@ -30,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    }
+  }
 
   public loginForm = new FormGroup({
     mail: new FormControl('', Validators.required),
@@ -38,42 +41,31 @@ export class LoginComponent implements OnInit {
   })
 
   public login() {
-    let mail = this.loginForm.get('mail')
-    alert(mail);
-    console.log(String(mail))
+    let mail = this.loginForm.get('mail')?.value as string
     this.serviceUser.getUserConfig()
       .subscribe((res) => {
-        this.userListConnected = res.filter((todo: User)=> todo.mail == mail?.value);
-        console.log(this.userListConnected)
+        this.userListConnected = res.filter((todo: User) => todo.mail == this.loginForm.get('mail')?.value);
       });
+    if ( this.userListConnected[0] != undefined ){
+      this.currUser = this.userListConnected[0];
+      this.checkMail(mail);
+      this.serviceUser.currUser = this.currUser;
+    }
+    else{
+      alert("adresse mail non reconnue");
+    }
 
-  /*
-  public isConnected : boolean = false;
-  private currlogmail= "";
-  public userTempConnected! : User[];
-  public userConnected! : User;
-  public userPairs! : [{mail: string,mdp : string }];
+  }
 
-
-  public toto!: User;
-  public mails! : string[];
-
-
-  let currUser = this.userTempConnected[0];
-   if (currUser.mail === this.loginForm.get('mail')?.value as string &&  currUser.mdp === this.loginForm.get('mdp')?.value as string ){
+  public checkMail(m:string) {
+    if (this.currUser.mail === this.loginForm.get('mail')?.value as string && this.currUser.mdp === this.loginForm.get('mdp')?.value as string) {
       alert("Connexion réussie");
       this.isConnected = true;
-      this.id = this.toto.id;
-      //rediriger compte clint + info CC ou id
+      this.router.navigate(['/account']);
 
     } else {
       alert("mdp ou adresse mail incorecte(s)");
       // erreur pas le bon mdp ou mail
     }
-
-    async ngOnInit() {
-      this.toto = await lastValueFrom(this.serviceUser.getUserConfig());
-    }*/
-
   }
 }

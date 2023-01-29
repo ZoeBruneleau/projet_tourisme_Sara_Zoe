@@ -9,11 +9,9 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  public userEmail!: string;
 
   public listUser? : User[];
-
-
+  public currUser? : User;
 
   getUserConfig(){
     console.log('user');
