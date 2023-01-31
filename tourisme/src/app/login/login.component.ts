@@ -5,6 +5,7 @@ import {UserService} from "../service/user.service";
 import {User} from "../User";
 import {lastValueFrom, Observable} from "rxjs";
 import {ServiceService} from "../service/service.service";
+import {ApiService} from "../service/api.service";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
   public mail : string = "";
 
 
-  constructor( private router: Router ,private serviceUser:UserService) {
+  constructor( private router: Router ,private serviceUser:UserService,private apiService : ApiService ) {
     this.serviceUser.getUserConfig()
       .subscribe((user) => {
         this.user= user;
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
   })
 
   public login() {
+    /*
     let mail = this.loginForm.get('mail')?.value as string
     this.serviceUser.getUserConfig()
       .subscribe((res) => {
@@ -53,7 +55,17 @@ export class LoginComponent implements OnInit {
     }
     else{
       alert("adresse mail non reconnue");
+    } */
+
+    if (this.loginForm.invalid) {
+      alert("notvalide")
     }
+
+    this.serviceUser
+      .login(this.loginForm.get('mail')?.value as string, this.loginForm.get('mdp')?.value as string)
+      .subscribe((response) => {
+        this.router.navigate(['/account']);
+      });
 
   }
 
@@ -68,4 +80,8 @@ export class LoginComponent implements OnInit {
       // erreur pas le bon mdp ou mail
     }
   }
+
+
 }
+
+//https://blog.angular-university.io/angular-jwt-authentication/

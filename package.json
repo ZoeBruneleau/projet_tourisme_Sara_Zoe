@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@asymmetrik/ngx-leaflet": "^15.0.1",
+    "@auth0/angular-jwt": "^5.1.2",
     "leaflet": "^1.9.3",
     "mira": "^1.5.0",
     "ngx-pagination": "^6.0.3"

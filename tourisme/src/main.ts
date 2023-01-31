@@ -16,6 +16,7 @@ new Server({
     this.passthrough();
     this.get('getUser', () => require("./app/user.json"));
     this.get('/getTourism', () => require('./app/mock.tourisme.json'));
+    this.post('/login', () => require('./app/user.json'));
 
 
 
