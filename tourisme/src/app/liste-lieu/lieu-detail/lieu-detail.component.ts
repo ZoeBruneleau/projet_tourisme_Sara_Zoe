@@ -12,20 +12,28 @@ import {lastValueFrom} from "rxjs";
 export class LieuDetailComponent implements OnInit {
 
   public id?: string | null =""
-  public lieu_list: Tourisme[] | undefined
+  public list_lieu: Tourisme[] =[];
+  public list_unique: Tourisme[] =[];
+
+
   lieu: Tourisme | undefined
 
-  //newlieu: Tourisme = {comment: "comment", image: "image", latitude: 0, longitude: 0, name: "testlieu", wiki: "", id:800}
+  newlieu: Tourisme = {id: 800, name: "testlieu", latitude: 0, longitude: 0, comment: "commentaire", image:"image", wiki: ""}
+
   constructor(private route: ActivatedRoute, private service: ServiceService) {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.service.getConfig()
+
+    this.service.getAllLieu()
       .subscribe((res) => {
-        this.lieu_list = res.filter((todo: Tourisme)=> todo.id === Number(this.id));
+        this.list_unique = res.filter((todo: Tourisme)=> todo.id === Number(this.id));
       });
 
-   // let id = this.service.addTodo(this.newlieu)
-    //console.log("id")
-    //console.log(id)
+    this.service.addLieu(this.newlieu)
+      .subscribe((res) => {
+      console.log(res);
+      });
+
+
   }
   ngOnInit() {
   }

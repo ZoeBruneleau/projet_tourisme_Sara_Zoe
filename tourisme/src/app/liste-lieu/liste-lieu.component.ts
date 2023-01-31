@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Tourisme} from "../Tourisme";
 import {ServiceService} from "../service/service.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-liste-lieu',
@@ -9,13 +10,14 @@ import {ServiceService} from "../service/service.service";
 })
 export class ListeLieuComponent implements OnInit {
 
-  public lieu?:Tourisme[];
-
-  constructor(private service: ServiceService) {
-    this.service.getConfig()
+  public lieu:Tourisme[]= [];
+  public iterableLieu:string[]= [];
+  constructor(private service: ServiceService, private http: HttpClient) {
+    this.service.getAllLieu()
       .subscribe((res) => {
         this.lieu = res;
       });
+
 
   }
   ngOnInit() {
