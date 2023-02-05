@@ -38,6 +38,7 @@ export class UserService {
       tap((response: any) => {
         this._isLoggedIn$.next(true);
         localStorage.setItem('profanis_auth', response.token);
+        console.log(response.token);
       })
     );
   }

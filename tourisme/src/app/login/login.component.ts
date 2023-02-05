@@ -6,6 +6,8 @@ import {User} from "../User";
 import {lastValueFrom, Observable} from "rxjs";
 import {ServiceService} from "../service/service.service";
 import {ApiService} from "../service/api.service";
+import {AuthInterceptor} from "../auth.interceptor";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,8 @@ export class LoginComponent implements OnInit {
   public mail : string = "";
 
 
-  constructor( private router: Router ,private serviceUser:UserService,private apiService : ApiService ) {
+  constructor( private router: Router ,private serviceUser:UserService,private apiService : ApiService,    private http: HttpClient
+  ) {
     this.serviceUser.getUserConfig()
       .subscribe((user) => {
         this.user= user;
@@ -42,7 +45,7 @@ export class LoginComponent implements OnInit {
   })
 
   public login() {
-    /*
+  /*
     let mail = this.loginForm.get('mail')?.value as string
     this.serviceUser.getUserConfig()
       .subscribe((res) => {
@@ -52,20 +55,25 @@ export class LoginComponent implements OnInit {
       this.currUser = this.userListConnected[0];
       this.checkMail(mail);
       this.serviceUser.currUser = this.currUser;
+
+      this.serviceUser
+        .login(this.loginForm.get('mail')?.value as string, this.loginForm.get('mdp')?.value as string)
+        .subscribe((response) => {
+          this.router.navigate(['/account']);
+        });
     }
     else{
       alert("adresse mail non reconnue");
     } */
 
-    if (this.loginForm.invalid) {
-      alert("notvalide")
-    }
+    this.http.post('http://localhost:8000/api/login', this.loginForm.getRawValue(), {withCredentials: true})
+      .subscribe((res: any) => {
+        AuthInterceptor.accessToken = res.token;
 
-    this.serviceUser
-      .login(this.loginForm.get('mail')?.value as string, this.loginForm.get('mdp')?.value as string)
-      .subscribe((response) => {
         this.router.navigate(['/account']);
+        console.log(res.token);
       });
+
 
   }
 
