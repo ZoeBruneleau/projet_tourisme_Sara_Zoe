@@ -3,7 +3,6 @@ import {ActivatedRoute} from "@angular/router";
 import {ServiceService} from "../../service/service.service";
 import {Tourisme} from "../../Tourisme";
 import {lastValueFrom} from "rxjs";
-
 @Component({
   selector: 'app-lieu-detail',
   templateUrl: './lieu-detail.component.html',
@@ -18,8 +17,7 @@ export class LieuDetailComponent implements OnInit {
 
   lieu: Tourisme | undefined
 
-  newlieu: Tourisme = {id: 800, name: "testlieu", latitude: 0, longitude: 0, comment: "commentaire", image:"image", wiki: ""}
-
+  newlieu: Tourisme = new Tourisme(800, 'test', 0, 0, 'comment')
   constructor(private route: ActivatedRoute, private service: ServiceService) {
     this.id = this.route.snapshot.paramMap.get('id');
 
@@ -27,6 +25,8 @@ export class LieuDetailComponent implements OnInit {
       .subscribe((res) => {
         this.list_unique = res.filter((todo: Tourisme)=> todo.id === Number(this.id));
       });
+
+
 
     this.service.addLieu(this.newlieu)
       .subscribe((res) => {
@@ -36,6 +36,24 @@ export class LieuDetailComponent implements OnInit {
 
   }
   ngOnInit() {
+    AddLieu(this.newlieu);
   }
 
 }
+function AddLieu(newlieu: Tourisme) {
+  var fs = require('file-system');
+  var data = fetch("assets/js/add.js");
+  var myObject = JSON.parse(data.toString());
+
+  // Adding the new data to our object
+  myObject.push(newlieu);
+
+  // Writing to our JSON file
+  var newData2 = JSON.stringify(myObject);
+  fs.writeFile("assets/js/add.js", newData2, (err: any) => {
+    // Error checking
+    if (err) throw err;
+    console.log("New data added");
+  });
+}
+

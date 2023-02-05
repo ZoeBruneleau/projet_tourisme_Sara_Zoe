@@ -4,7 +4,7 @@ import {Tourisme} from "../Tourisme";
 import {DomUtil} from "leaflet";
 import get = DomUtil.get;
 import {catchError, filter, Observable, of} from "rxjs";
-import {map, tap} from "rxjs/operators";
+import {map, retry, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -30,12 +30,21 @@ export class ServiceService {
     }))
   }
 
-  public addLieu(newlieu: Tourisme){
-    console.log("addTodo")
-    return this.http.post(this.baseURL + 'lieu', newlieu).pipe(map((resp) => {
-      return resp
-    }))
+  public addLieu(newlieu: Tourisme):Observable<any>{
+
+
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json','Authorization': 'my-auth-token'})
+    };
+    console.log(JSON.stringify(newlieu))
+    return this.http.post<Tourisme>(this.baseURL + 'lieu', {id:800}, httpOptions)
+      .pipe(retry(1));
+
+
   }
+
+
+
 
 
 

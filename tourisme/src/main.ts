@@ -13,9 +13,11 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 new Server({
   routes() {
-    this.passthrough();
     this.get('getUser', () => require("./app/user.json"));
     this.get('/getTourism', () => require('./app/mock.tourisme.json'));
+    this.post('/getTourism', () => require('./app/mock.tourisme.json'));
+    this.get('http://localhost:3000/lieu', () => require('./app/mock.tourisme.json'));
+    this.post('http://localhost:3000/lieu', () => require('./app/mock.tourisme.json'));
 
 
 
