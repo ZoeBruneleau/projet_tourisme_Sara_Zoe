@@ -9,6 +9,7 @@ import {MapComponent} from "./map/map.component";
 import {ListeLieuComponent} from "./liste-lieu/liste-lieu.component";
 import {LieuDetailComponent} from "./liste-lieu/lieu-detail/lieu-detail.component";
 
+
 const routes: Routes = [
   { path : 'home', component: HomeComponent },
   { path : 'account', component: AccountComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path : 'lieu/:id', component: LieuDetailComponent },
     { path : 'subcribe', component: SubcribeComponent },
     { path : 'login', component: LoginComponent },
+
   ]
 
 @NgModule({

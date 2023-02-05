@@ -5,7 +5,8 @@ import {UserService} from "../service/user.service";
 import {User} from "../User";
 import {lastValueFrom, Observable} from "rxjs";
 import {ServiceService} from "../service/service.service";
-import {ApiService} from "../service/api.service";
+import {AuthService} from "../service/auth.service";
+
 
 @Component({
   selector: 'app-login',
@@ -25,24 +26,41 @@ export class LoginComponent implements OnInit {
   public mail : string = "";
 
 
-  constructor( private router: Router ,private serviceUser:UserService,private apiService : ApiService ) {
+  constructor( private router: Router ,private serviceUser:UserService, private authService:AuthService ) {
     this.serviceUser.getUserConfig()
       .subscribe((user) => {
         this.user= user;
       })
+
+
   }
 
   ngOnInit() {
 
   }
 
+  userLogin() {
+
+    this.authService.userLogin(this.loginForm.value)
+      .subscribe(
+        (value) => {
+          if(value){
+            this.checkMail()
+          }else{
+            alert('failed');
+          }
+        },
+        (error)=>{
+          alert('failed error');
+        }
+      );
+  }
   public loginForm = new FormGroup({
     mail: new FormControl('', Validators.required),
     mdp: new FormControl('', Validators.required)
   })
 
-  public login() {
-    /*
+  public checkMail() {
     let mail = this.loginForm.get('mail')?.value as string
     this.serviceUser.getUserConfig()
       .subscribe((res) => {
@@ -50,36 +68,23 @@ export class LoginComponent implements OnInit {
       });
     if ( this.userListConnected[0] != undefined ){
       this.currUser = this.userListConnected[0];
-      this.checkMail(mail);
+      if (this.currUser.mail === this.loginForm.get('mail')?.value as string && this.currUser.mdp === this.loginForm.get('mdp')?.value as string) {
+        alert("Connexion réussie");
+        this.isConnected = true;
+        this.router.navigate(['/account']);
+
+      } else {
+        alert("mdp ou adresse mail incorecte(s)");
+        // erreur pas le bon mdp ou mail
+      }
       this.serviceUser.currUser = this.currUser;
     }
     else{
       alert("adresse mail non reconnue");
-    } */
-
-    if (this.loginForm.invalid) {
-      alert("notvalide")
     }
-
-    this.serviceUser
-      .login(this.loginForm.get('mail')?.value as string, this.loginForm.get('mdp')?.value as string)
-      .subscribe((response) => {
-        this.router.navigate(['/account']);
-      });
 
   }
 
-  public checkMail(m:string) {
-    if (this.currUser.mail === this.loginForm.get('mail')?.value as string && this.currUser.mdp === this.loginForm.get('mdp')?.value as string) {
-      alert("Connexion réussie");
-      this.isConnected = true;
-      this.router.navigate(['/account']);
-
-    } else {
-      alert("mdp ou adresse mail incorecte(s)");
-      // erreur pas le bon mdp ou mail
-    }
-  }
 
 
 }

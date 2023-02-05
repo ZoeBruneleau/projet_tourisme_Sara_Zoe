@@ -10,7 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { SubcribeComponent } from './subcribe/subcribe.component';
 import { LoginComponent } from './login/login.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FeatureSectionComponent } from './home/feature-section/feature-section.component';
 import { CtaComponent } from './home/cta/cta.component';
 import { AccountComponent } from './account/account.component';
@@ -19,6 +19,9 @@ import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import { MapComponent } from './map/map.component';
 import { ListeLieuComponent } from './liste-lieu/liste-lieu.component';
 import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.compon
     MapComponent,
     ListeLieuComponent,
     LieuDetailComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,9 @@ import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.compon
     HttpClientModule,
     ReactiveFormsModule,
     LeafletModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
