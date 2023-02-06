@@ -1,8 +1,30 @@
-<div class="mt-4 bg-light" *ngIf="lieu">
+<nav class="navbar navbar-dark bg-vert mt-4">
+  <div class="container-fluid">
+    <a class="navbar-brand">Liste des lieux à visiter en France</a>
+
+    <form class="d-flex input-group w-auto" [formGroup]="searchForm" (ngSubmit)="search()">
+      <input
+        type="search"
+        formControlName="search"
+        class="form-control rounded"
+        placeholder="Abbaye de ..."
+        aria-label="Search"
+        aria-describedby="search-addon"
+      />
+      <span class="input-group-text text-white border-0" id="search-addon">
+        <button  [disabled]="searchForm.invalid" type="submit" class="btn" value="search">
+          <img src="https://cdn-icons-png.flaticon.com/512/68/68213.png" class="icon">
+        </button>
+      </span>
+    </form>
+  </div>
+</nav>
+<div class=" bg-light" *ngIf="list_lieu">
+
   <div class="w-75 mx-auto py-5 container">
   <div class="card-group row row-cols-3">
 
-    <div *ngFor=" let data of lieu " class="col">
+    <div *ngFor=" let data of list_lieu " class="col">
     <div  class="card m-3">
       <a class="not_a" href="/lieu/{{data.id}}/">
         <img class="card-img-top" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
