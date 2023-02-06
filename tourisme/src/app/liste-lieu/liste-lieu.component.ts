@@ -40,5 +40,8 @@ export class ListeLieuComponent implements OnInit {
       }
       this.list_lieu = newlist
     }
+    else{
+      this.list_lieu = this.copie_list_lieu
+    }
   }
 }
