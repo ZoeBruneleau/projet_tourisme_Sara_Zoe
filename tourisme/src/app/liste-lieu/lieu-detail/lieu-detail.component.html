@@ -1,5 +1,5 @@
-<section class="py-20 overflow-hidden my-4" *ngIf="lieu_list" >
-  <div class="container my-4" *ngFor=" let lieu of lieu_list">
+<section class="py-20 overflow-hidden my-4" *ngIf="lieu" >
+  <div class="container my-4" >
     <div class="row mb-24">
       <div class="col-12 col-md-6 mb-8 mb-md-0">
         <div class="position-relative mb-10" style="height: 564px;">
@@ -26,7 +26,7 @@
             <p class="mw-md pt-2 text-secondary">Maecenas commodo libero ut molestie dictum. Morbi placerat eros id porttitor sagittis.</p>
           </div>
           <div class="row mb-14 mt-4">
-            <div class="col-12 col-xl-8 mb-4 mb-xl-0"><a class="btn w-50 btn_green" href="#">Ajouter un commentaire</a></div>
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0"><a class="btn w-50 btn_green" href="/add_comment/{{lieu.id}}/">Ajouter un commentaire</a></div>
             <div class="col-12 col-xl-4">
               <a class="h-100 ms-auto ms-sm-0 flex-shrink-0 d-inline-flex me-4 align-items-center justify-content-center rounded-2 border" href="#" style="width: 64px; min-height: 52px;">
                 <svg width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" class="color-danger">
@@ -37,15 +37,6 @@
           </div>
           <div class="d-flex align-items-center">
             <p class="me-8 mb-0 text-secondary fw-bold text-uppercase">Liste des commentaires</p>
-            <a class="me-1" href="#" style="width: 32px; height: 32px;">
-              <img class="img-fluid" src="yofte-assets/buttons/facebook-circle.svg" alt="">
-            </a>
-            <a class="me-1" href="#" style="width: 32px; height: 32px;">
-              <img class="img-fluid" src="yofte-assets/buttons/instagram-circle.svg" alt="">
-            </a>
-            <a href="#" style="width: 32px; height: 32px;">
-              <img class="img-fluid" src="yofte-assets/buttons/twitter-circle.svg" alt="">
-            </a>
           </div>
         </div>
       </div>

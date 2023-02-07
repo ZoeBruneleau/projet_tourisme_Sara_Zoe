@@ -20,7 +20,11 @@ export class LieuDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.service.getConfig()
       .subscribe((res) => {
-        this.lieu_list = res.filter((todo: Tourisme)=> todo.id === Number(this.id));
+        for(let lieu in res){
+          if(res[lieu].id ==Number(this.id)){
+            this.lieu=res[lieu]
+          }
+        }
       });
 
    // let id = this.service.addTodo(this.newlieu)
