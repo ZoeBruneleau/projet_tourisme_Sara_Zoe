@@ -22,7 +22,6 @@ export class UserService {
   public currUser? : User;
 
   getUserConfig(){
-    console.log('user');
     return this.http.get<User[]>("/getUser")
   }
 

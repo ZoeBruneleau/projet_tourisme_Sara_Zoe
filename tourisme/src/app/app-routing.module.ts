@@ -8,11 +8,12 @@ import {AccountEditComponent} from "./account/account-edit/account-edit.componen
 import {MapComponent} from "./map/map.component";
 import {ListeLieuComponent} from "./liste-lieu/liste-lieu.component";
 import {LieuDetailComponent} from "./liste-lieu/lieu-detail/lieu-detail.component";
+import {AuthGuard} from "./auth.guard";
 
 
 const routes: Routes = [
   { path : 'home', component: HomeComponent },
-  { path : 'account', component: AccountComponent },
+  { path : 'account/:id', component: AccountComponent },
   { path : 'account_edit', component: AccountEditComponent },
   { path : 'map', component: MapComponent },
   { path : 'list_lieu', component: ListeLieuComponent },

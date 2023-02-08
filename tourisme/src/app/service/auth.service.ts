@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, of} from "rxjs";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {map} from "rxjs/operators";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class AuthService {
   userInfo = new BehaviorSubject(null);
   jwtHelper = new JwtHelperService();
 
-  constructor() { }
+  constructor(private http:HttpClient) {
+    this.loadUserInfo();
+  }
 
 
 
@@ -28,14 +31,29 @@ export class AuthService {
             return false;
           }
           localStorage.setItem("access_token", token);
+          localStorage.setItem("id", login.mail);
           const decodedUser = this.jwtHelper.decodeToken(token);
           this.userInfo.next(decodedUser);
           return true;
+
         }));
 
     }
     return of(false);
 
+  }
+
+
+
+  loadUserInfo() {
+    let userdata = this.userInfo.getValue();
+    if (!userdata) {
+      const access_token = localStorage.getItem('id');
+      if (access_token) {
+        userdata = this.jwtHelper.decodeToken(access_token);
+        this.userInfo.next(userdata);
+      }
+    }
   }
 
 }

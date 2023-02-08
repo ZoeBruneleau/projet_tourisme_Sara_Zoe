@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../service/user.service";
 import {User} from "../User";
+import {Tourisme} from "../Tourisme";
+
 
 @Component({
   selector: 'app-account',
@@ -11,19 +13,22 @@ import {User} from "../User";
 export class AccountComponent implements OnInit {
 
   public currUser : User | undefined ;
-  public userListConnected : User[]=[];
+  public user :User[] =[];
+  public userListConnected! : User[];
 
-  constructor(private serviceUser:UserService) {
-    this.currUser = this.serviceUser.currUser ;
-  }
+  public id?: string | null ="";
 
-  getCurrUserById(id:number){
-    this.serviceUser.getUserConfig()
+  constructor(private route: ActivatedRoute,private service:UserService) {
+    this.id = this.route.snapshot.paramMap.get('id') ;
+    this.service.getUserConfig()
       .subscribe((res) => {
-        this.userListConnected = res.filter((todo: User) => todo.id == id);
+        this.userListConnected = res.filter((todo: User)=> todo.id === Number(this.id));
+        this.currUser=this.userListConnected[0]
       });
 
   }
+
+
   ngOnInit(): void {
   }
 
