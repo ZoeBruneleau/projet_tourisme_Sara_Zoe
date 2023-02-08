@@ -17,14 +17,17 @@ export class ListeLieuComponent implements OnInit {
     search : new FormControl(''),
   })
   constructor(private service: ServiceService) {
+
     this.service.getConfig()
       .subscribe((res) => {
+        console.log(res)
         this.list_lieu = res;
         this.copie_list_lieu = res;
       });
   }
 
   ngOnInit() {
+
   }
   search(){
     let newlist = []

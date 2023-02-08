@@ -8,6 +8,7 @@ import {AccountEditComponent} from "./account/account-edit/account-edit.componen
 import {MapComponent} from "./map/map.component";
 import {ListeLieuComponent} from "./liste-lieu/liste-lieu.component";
 import {LieuDetailComponent} from "./liste-lieu/lieu-detail/lieu-detail.component";
+import {AddCommentComponent} from "./liste-lieu/lieu-detail/add-comment/add-comment.component";
 
 const routes: Routes = [
   { path : 'home', component: HomeComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path : 'list_lieu', component: ListeLieuComponent },
   { path : 'lieu/:id', component: LieuDetailComponent },
     { path : 'subcribe', component: SubcribeComponent },
-    { path : 'login', component: LoginComponent },
+  { path : 'login', component: LoginComponent },
+  { path : 'add_comment/:id', component: AddCommentComponent },
   ]
 
 @NgModule({

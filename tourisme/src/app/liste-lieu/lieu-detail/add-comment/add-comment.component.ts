@@ -20,14 +20,9 @@ export class AddCommentComponent implements OnInit {
   })
   constructor(private route: ActivatedRoute, private service: ServiceService) {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.service.getConfig()
-      .subscribe((res) => {
-        for (let lieu in res) {
-          if (res[lieu].id == Number(this.id)) {
-            this.lieu = res[lieu]
-          }
-        }
-      });
+    this.service.addTodo(this.commentForm.value)
+
+
   }
   ngOnInit(): void {
   }

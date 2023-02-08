@@ -19,6 +19,7 @@ import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import { MapComponent } from './map/map.component';
 import { ListeLieuComponent } from './liste-lieu/liste-lieu.component';
 import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.component';
+import { AddCommentComponent } from './liste-lieu/lieu-detail/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.compon
     MapComponent,
     ListeLieuComponent,
     LieuDetailComponent,
+    AddCommentComponent,
   ],
   imports: [
     BrowserModule,
