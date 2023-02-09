@@ -14,6 +14,6 @@ export class AppComponent {
   title:string = "Tourisme";
 
 
-constructor(public serviceUser:UserService) {
+constructor() {
 }
 }

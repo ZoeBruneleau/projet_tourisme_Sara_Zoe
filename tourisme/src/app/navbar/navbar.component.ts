@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   public currUser : User | undefined ;
   public userListConnected : User[]=[];
 
-  constructor(private serviceUser:UserService) {
+  constructor(public serviceUser:UserService) {
     this.currUser = this.serviceUser.currUser ;
   }
 

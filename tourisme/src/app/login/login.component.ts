@@ -3,10 +3,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../service/user.service";
 import {User} from "../User";
-import {lastValueFrom, Observable} from "rxjs";
-import {ServiceService} from "../service/service.service";
-import {ApiService} from "../service/api.service";
-import {AuthInterceptor} from "../auth.interceptor";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -27,7 +23,7 @@ export class LoginComponent implements OnInit {
   public mail : string = "";
 
 
-  constructor( private router: Router ,private serviceUser:UserService,private apiService : ApiService,    private http: HttpClient
+  constructor( private router: Router ,private serviceUser:UserService,    private http: HttpClient
   ) {
     this.serviceUser.getUserConfig()
       .subscribe((user) => {
@@ -44,52 +40,43 @@ export class LoginComponent implements OnInit {
     mdp: new FormControl('', Validators.required)
   })
 
+
   public login() {
-  /*
-    let mail = this.loginForm.get('mail')?.value as string
+    let m = this.loginForm.get('mail')?.value;
+    let mdp = this.loginForm.get('mdp')?.value as string
     this.serviceUser.getUserConfig()
       .subscribe((res) => {
-        this.userListConnected = res.filter((todo: User) => todo.mail == this.loginForm.get('mail')?.value);
+        this.userListConnected = res.filter((todo: User) => todo.mail == m);
+        if (this.userListConnected != undefined) {
+          this.currUser = this.userListConnected[0];
+          if (this.currUser == undefined){
+            alert("mdp ou adresse mail incorecte(s)");
+          }
+          if ( this.currUser.mail === m && this.currUser.mdp === mdp) {
+         /*
+           this.http.post('/login', this.loginForm.getRawValue(), {withCredentials: true})
+              .subscribe((res: any) => {
+
+                alert("Connexion réussie");
+                this.router.navigate(['/account']);
+              }); */
+            this.serviceUser.login(this.loginForm.get('mdp')?.value as string,mdp);
+
+
+          } else {
+            alert("mdp ou adresse mail incorecte(s)");
+            // erreur pas le bon mdp ou mail
+          }
+          this.serviceUser.currUser = this.currUser;
+        } else {
+          alert("adresse mail non reconnue");
+        }
       });
-    if ( this.userListConnected[0] != undefined ){
-      this.currUser = this.userListConnected[0];
-      this.checkMail(mail);
-      this.serviceUser.currUser = this.currUser;
-
-      this.serviceUser
-        .login(this.loginForm.get('mail')?.value as string, this.loginForm.get('mdp')?.value as string)
-        .subscribe((response) => {
-          this.router.navigate(['/account']);
-        });
-    }
-    else{
-      alert("adresse mail non reconnue");
-    } */
-
-    this.http.post('http://localhost:8000/api/login', this.loginForm.getRawValue(), {withCredentials: true})
-      .subscribe((res: any) => {
-        AuthInterceptor.accessToken = res.token;
-
-        this.router.navigate(['/account']);
-        console.log(res.token);
-      });
-
-
   }
 
-  public checkMail(m:string) {
-    if (this.currUser.mail === this.loginForm.get('mail')?.value as string && this.currUser.mdp === this.loginForm.get('mdp')?.value as string) {
-      alert("Connexion réussie");
-      this.isConnected = true;
-      this.router.navigate(['/account']);
 
-    } else {
-      alert("mdp ou adresse mail incorecte(s)");
-      // erreur pas le bon mdp ou mail
-    }
-  }
 
 
 }
 
-//https://blog.angular-university.io/angular-jwt-authentication/
+
