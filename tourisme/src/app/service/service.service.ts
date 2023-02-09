@@ -27,10 +27,9 @@ export class ServiceService {
     return this.http.get<Tourisme[]>("/comment");
   }
 
-  addTodo(com: Comment): Observable<any>{
+  addTodo(com:any): Observable<any>{
 
       const headers = { 'content-type': 'application/json'}
-    com.id = 3;
       const body=JSON.stringify(com);
       console.log(body)
       return this.http.post<Comment>('/comment', body,{'headers':headers})
