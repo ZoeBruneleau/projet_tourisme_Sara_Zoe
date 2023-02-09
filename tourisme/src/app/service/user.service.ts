@@ -31,10 +31,5 @@ export class UserService {
     })
   }
 
-  login(username: string, password: string) {
-
-  }
-
-
 
 }

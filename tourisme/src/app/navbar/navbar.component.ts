@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../service/user.service";
 import {User} from "../User";
+import {AuthService} from "../service/auth.service";
 
 @Component({
   selector: 'app-navbar',
@@ -12,8 +13,11 @@ export class NavbarComponent implements OnInit {
   public currUser : User | undefined ;
   public userListConnected : User[]=[];
 
+  public id : User | undefined ;
+
   constructor(private serviceUser:UserService) {
-    this.currUser = this.serviceUser.currUser ;
+
+
   }
 
 

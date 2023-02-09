@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   public user :User[] =[];
   public userListConnected! : User[];
   public currUser! : User;
-  public isConnected : boolean = false;
+
 
   public id? : number ;
   public mdp : string = "";
@@ -70,8 +70,8 @@ export class LoginComponent implements OnInit {
           this.currUser = this.userListConnected[0];
           if (this.currUser.mail === m && this.currUser.mdp === mdp) {
             alert("Connexion réussie");
-            this.isConnected = true;
-            this.router.navigate(['/account/' + this.currUser.id]);
+
+            this.router.navigate(['/account/' ]);
 
           } else {
             alert("mdp ou adresse mail incorecte(s)");

@@ -11,13 +11,19 @@ export class AuthService {
 
   userInfo = new BehaviorSubject(null);
   jwtHelper = new JwtHelperService();
+  private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   constructor(private http:HttpClient) {
     this.loadUserInfo();
   }
 
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    this._isLoggedIn$.next(!!token);
+    return !this.jwtHelper.isTokenExpired(token);
 
-
+  }
   userLogin(login:any):Observable<boolean>{
 
     if(login &&
@@ -32,6 +38,8 @@ export class AuthService {
           }
           localStorage.setItem("access_token", token);
           localStorage.setItem("id", login.mail);
+          this._isLoggedIn$.next(true);
+          this.log(login.mail as string,login.mdp as string);
           const decodedUser = this.jwtHelper.decodeToken(token);
           this.userInfo.next(decodedUser);
           return true;
@@ -41,7 +49,15 @@ export class AuthService {
     }
     return of(false);
 
+
+
   }
+
+  log(mail : string, mdp :string) {
+    return this.http.post('/login',{mail,mdp} ).subscribe((res: any) => {
+
+    })
+  };
 
 
 

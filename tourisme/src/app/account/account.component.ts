@@ -19,11 +19,22 @@ export class AccountComponent implements OnInit {
   public id?: string | null ="";
 
   constructor(private route: ActivatedRoute,private service:UserService) {
-    this.id = this.route.snapshot.paramMap.get('id') ;
+
+    if (!(this.service.currUser == undefined || this.service.currUser ==null)){
+      this.currUser = this.service.currUser ;
+    }
+   else{
+      this.id = this.route.snapshot.paramMap.get('id') ;
+      this.getCurrUserById(this.id);
+    }
+
+
+  }
+
+  getCurrUserById(id:string | null){
     this.service.getUserConfig()
       .subscribe((res) => {
-        this.userListConnected = res.filter((todo: User)=> todo.id === Number(this.id));
-        this.currUser=this.userListConnected[0]
+        this.userListConnected = res.filter((todo: User) => todo.id == Number(id));
       });
 
   }
