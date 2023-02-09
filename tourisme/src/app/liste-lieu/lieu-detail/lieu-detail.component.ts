@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ServiceService} from "../../service/service.service";
 import {Tourisme} from "../../Tourisme";
 import {lastValueFrom} from "rxjs";
+import { Comment } from 'src/app/comment';
 
 @Component({
   selector: 'app-lieu-detail',
@@ -11,25 +12,28 @@ import {lastValueFrom} from "rxjs";
 })
 export class LieuDetailComponent implements OnInit {
 
-  public id?: string | null =""
+  public id?: string | null = ""
   public lieu_list: Tourisme[] | undefined
   lieu: Tourisme | undefined
+  list_comment: Comment[] =[]
+  number: number[] | undefined
 
-  //newlieu: Tourisme = {comment: "comment", image: "image", latitude: 0, longitude: 0, name: "testlieu", wiki: "", id:800}
   constructor(private route: ActivatedRoute, private service: ServiceService) {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.service.getLieu()
+    this.service.getLieuId(this.id)
       .subscribe((res) => {
-        for(let lieu in res){
-          if(res[lieu].id ==Number(this.id)){
-            this.lieu=res[lieu]
+        this.lieu = res;
+    });
+
+    this.service.getComment()
+      .subscribe((res) => {
+        for(let comment in res){
+          if(res[comment].id_lieu ==Number(this.id)){
+            this.list_comment.push(res[comment])
+            res[comment].tab_note = Array(res[comment].note).fill(0);
           }
         }
       });
-
-   // let id = this.service.addTodo(this.newlieu)
-    //console.log("id")
-    //console.log(id)
   }
   ngOnInit() {
   }

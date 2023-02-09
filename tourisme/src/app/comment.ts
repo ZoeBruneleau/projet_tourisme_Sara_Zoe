@@ -1,9 +1,14 @@
 export class Comment{
   id!: number;
 
-  text!: string;
+  id_lieu!: number;
+
+  pseudo!: string;
+
+  comment!: string;
 
   note!: number;
+  tab_note!: number[];
 
 
 }

@@ -19,12 +19,18 @@ export class ServiceService {
 
   baseURL: string = "http://localhost:3000/";
 
-  public getLieu() {
+  public getAllLieu() {
     return this.http.get<Tourisme[]>("/lieu");
   }
 
+  public getLieuId(id: string | null) {
+    return this.http.get<any>("/lieu/"+id).pipe(map((resp) => {
+      return resp.lieu
+    }));
+  }
+
   public getComment() {
-    return this.http.get<Tourisme[]>("/comment");
+    return this.http.get<Comment[]>("/comment");
   }
 
   addTodo(com:any): Observable<any>{

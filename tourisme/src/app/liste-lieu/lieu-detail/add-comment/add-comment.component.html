@@ -18,14 +18,13 @@
 
         <div class="mb-3">
           <label for="comment" class="form-label">*Commentaires</label>
-          <textarea class="form-control" [(ngModel)]="com.text" formControlName="comment"  id="comment" rows="3"></textarea>
+          <textarea class="form-control" [(ngModel)]="com.comment" formControlName="comment"  id="comment" rows="3"></textarea>
         </div>
         <input  type="submit"  class="btn right"  value="Ajouter"  >
       </div>
 
       <div *ngFor="let c of comments;">
         <td>{{c.id}}</td>
-        <td>{{c.text}}</td>
       </div>
     </form>
   </div>

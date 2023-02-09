@@ -18,7 +18,7 @@ export class ListeLieuComponent implements OnInit {
   })
   constructor(private service: ServiceService) {
 
-    this.service.getLieu()
+    this.service.getAllLieu()
       .subscribe((res) => {
         console.log(res)
         this.list_lieu = res;
