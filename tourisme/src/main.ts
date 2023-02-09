@@ -33,6 +33,11 @@ createServer({
 
     });
 
+    this.get("/comment", function (schema, request) {
+      return schema.db['comments']
+
+    });
+
 
 
   },

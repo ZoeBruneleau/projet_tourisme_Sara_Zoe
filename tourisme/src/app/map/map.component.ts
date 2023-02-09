@@ -33,7 +33,7 @@ export class MapComponent implements OnInit {
       iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
     });
 
-    this.http.get('getTourism').subscribe((data: any) => {
+    this.http.get('/lieu').subscribe((data: any) => {
       data.forEach((lieu: Tourisme) => {
         L.marker([lieu.latitude, lieu.longitude], {icon: DefaultIcon})
           .bindPopup('<a title="' + lieu.name + '" href="/lieu/'+lieu.id+'/"> <img style="width: 100px" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" /></a><br> <b>'

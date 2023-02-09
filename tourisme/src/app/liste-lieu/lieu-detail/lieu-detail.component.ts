@@ -18,7 +18,7 @@ export class LieuDetailComponent implements OnInit {
   //newlieu: Tourisme = {comment: "comment", image: "image", latitude: 0, longitude: 0, name: "testlieu", wiki: "", id:800}
   constructor(private route: ActivatedRoute, private service: ServiceService) {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.service.getConfig()
+    this.service.getLieu()
       .subscribe((res) => {
         for(let lieu in res){
           if(res[lieu].id ==Number(this.id)){

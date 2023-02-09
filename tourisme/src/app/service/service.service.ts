@@ -19,8 +19,12 @@ export class ServiceService {
 
   baseURL: string = "http://localhost:3000/";
 
-  public getConfig() {
+  public getLieu() {
     return this.http.get<Tourisme[]>("/lieu");
+  }
+
+  public getComment() {
+    return this.http.get<Tourisme[]>("/comment");
   }
 
   addTodo(com: Comment): Observable<any>{
@@ -29,7 +33,7 @@ export class ServiceService {
     com.id = 3;
       const body=JSON.stringify(com);
       console.log(body)
-      return this.http.post<Comment>(this.baseURL + 'comment', body,{'headers':headers})
+      return this.http.post<Comment>('/comment', body,{'headers':headers})
         .pipe(
       catchError((err) => {
           console.error(err);

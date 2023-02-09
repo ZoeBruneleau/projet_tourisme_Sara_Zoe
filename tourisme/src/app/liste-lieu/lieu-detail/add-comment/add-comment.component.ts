@@ -34,11 +34,10 @@ export class AddCommentComponent implements OnInit {
   }
 
   refresh() {
-    this.service.getComments()
-      .subscribe(data => {
-        console.log(data)
-        this.comments = data;
-      })
+    this.service.getComment()
+      .subscribe((res) => {
+        console.log(res)
+      });
   }
 
 
