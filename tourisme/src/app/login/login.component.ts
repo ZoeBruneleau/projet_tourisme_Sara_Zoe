@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
         (value) => {
           if(value){
             this.checkmail();
-            console.log(localStorage.getItem('id'));
           }else{
             alert('failed');
           }
@@ -89,4 +88,4 @@ export class LoginComponent implements OnInit {
 
 }
 
-//https://blog.angular-university.io/angular-jwt-authentication/
+
