@@ -46,6 +46,14 @@
 
             <h5 class="mb-4 text-uppercase">Ma liste d'envie</h5>
 
+            <div class=" bg-light" *ngIf="list">
+
+
+                  <div *ngFor=" let data of list " >
+                    <p> {{data.name}}</p>
+                  </div>
+            </div>
+
           </div>
           <!-- end timeline content-->
 

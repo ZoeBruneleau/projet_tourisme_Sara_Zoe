@@ -18,7 +18,7 @@ createServer({
     lieu: Model,
     comment: Model,
     user: Model,
-
+    liste : Model,
 
   },
   routes() {
@@ -38,6 +38,13 @@ createServer({
       return schema.db['users']
 
     });
+
+    this.get("/liste/:idU", function (schema, request) {
+      let idU = request.params['idU']
+      return schema.db['liste'].where({ idU: idU })
+    });
+
+
 
     this.get("/user/:id", function (schema, request) {
       let id = request.params['id']

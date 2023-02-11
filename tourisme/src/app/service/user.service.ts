@@ -5,6 +5,8 @@ import {BehaviorSubject} from "rxjs";
 import {map, tap} from "rxjs/operators";
 import {FormControl, ɵFormGroupRawValue, ɵGetProperty, ɵTypedOrUntyped} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Tourisme} from "../Tourisme";
+import {Liste} from "../Liste";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +16,14 @@ export class UserService {
   isLoggedIn$ = this._isLoggedIn$.asObservable();
   public currUser? : User;
 
+  private list?:Liste[];
+  private lieus?:Tourisme[];
+
   constructor(private http:HttpClient , private router :Router) {
     const token = localStorage.getItem('profanis_auth');
     this._isLoggedIn$.next(!!token);
+
+
   }
 
 
@@ -31,9 +38,26 @@ export class UserService {
 
   }
 
-  getUserList(id:string){
+  getUserList(id: string | null)  {
+    return this.http.get<any>("/liste/"+id).subscribe((res) => {
+      this.list = res;
+
+      this.list?.forEach(value =>
+        this.http.get<any>("/lieu/"+value.idL).subscribe((resp) => {
+
+          this.lieus = this.lieus + resp.lieus
+          return this.lieus;
+        }) );
+
+      });
+
 
   }
+
+
+
+
+
 
   subcribe(sub:any) {
     const headers = { 'content-type': 'application/json'}
