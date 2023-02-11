@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../service/user.service";
 import {User} from "../User";
 import {Tourisme} from "../Tourisme";
+import {AuthService} from "../service/auth.service";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AccountComponent implements OnInit {
 
   public id?: string | null ="";
 
-  constructor(private route: ActivatedRoute,private service:UserService) {
+  constructor(private router : Router,private route: ActivatedRoute,private service:UserService,private authService:AuthService) {
 
     if (!(this.service.currUser == undefined || this.service.currUser ==null)){
       this.currUser = this.service.currUser ;
@@ -36,6 +37,13 @@ export class AccountComponent implements OnInit {
       .subscribe((res) => {
         this.userListConnected = res.filter((todo: User) => todo.id == Number(id));
       });
+
+  }
+
+  logout(){
+    this.authService.logout();
+    alert("Vous êtes déconnecté");
+    this.router.navigate(['/home']);
 
   }
 

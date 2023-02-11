@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (value) => {
           if(value){
-            this.userLogin2();
+            this.checkmail();
             console.log(localStorage.getItem('id'));
           }else{
             alert('failed');
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     mdp: new FormControl('', Validators.required)
   })
 
-  public userLogin2() {
+  public checkmail() {
     let m = this.loginForm.get('mail')?.value;
     let mdp = this.loginForm.get('mdp')?.value as string
     this.serviceUser.getUserConfig()
@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+
 
 
 
