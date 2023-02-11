@@ -9,6 +9,9 @@ export class Tourisme {
   comment!: string;
 
   wiki!: string;
+  ville!: string;
+
+
 
 
 }

@@ -19,8 +19,11 @@ import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import { MapComponent } from './map/map.component';
 import { ListeLieuComponent } from './liste-lieu/liste-lieu.component';
 import { LieuDetailComponent } from './liste-lieu/lieu-detail/lieu-detail.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
+
+import { AddCommentComponent } from './liste-lieu/lieu-detail/add-comment/add-comment.component';
 
 
 @NgModule({
@@ -38,6 +41,8 @@ import {MatInputModule} from "@angular/material/input";
     MapComponent,
     ListeLieuComponent,
     LieuDetailComponent,
+
+    AddCommentComponent,
 
   ],
   imports: [

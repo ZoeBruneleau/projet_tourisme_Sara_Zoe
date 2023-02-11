@@ -1,0 +1,33 @@
+<div class="bg-light py-5 mt-4" >
+  <div class="contenu mx-auto py-2 w-75">
+    <form  class="form-goup contact-form " [formGroup]="commentForm" (ngSubmit)="post()">
+      <h1 class="title">Ajouter un commentaire</h1>
+      <h1 class="subtitle"></h1>
+      <div class="container w-75  justify-content-center mt-5 mb-5 ">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="pseudo" class="form-label">*Pseudo</label>
+            <input type="text"   formControlName="pseudo" class="input-text" id="pseudo" placeholder="Pseudo" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="note" class="form-label">Note</label>
+            <input type="number"  [(ngModel)]="com.note" formControlName="note" class="input-text" id="note" placeholder="note /5">
+          </div>
+
+        </div>
+
+        <div class="mb-3">
+          <label for="comment" class="form-label">*Commentaires</label>
+          <textarea class="form-control" [(ngModel)]="com.comment" formControlName="comment"  id="comment" rows="3"></textarea>
+        </div>
+        <input  type="submit"  class="btn right"  value="Ajouter"  >
+      </div>
+
+      <div *ngFor="let c of comments;">
+        <td>{{c.id}}</td>
+      </div>
+    </form>
+  </div>
+</div>
+
+

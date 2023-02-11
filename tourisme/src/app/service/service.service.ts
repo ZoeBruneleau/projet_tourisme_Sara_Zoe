@@ -1,51 +1,51 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Tourisme} from "../Tourisme";
 import {DomUtil} from "leaflet";
 import get = DomUtil.get;
-import {filter, Observable, of} from "rxjs";
+import {catchError, filter, Observable, of} from "rxjs";
+import {map} from "rxjs/operators";
+import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
+import {User} from "../User";
+import {Comment} from "../comment";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
-  constructor(private http:HttpClient) { }
   public list_lieu?:Tourisme[];
 
-  public getConfig() {
-    return this.http.get<Tourisme[]>("/getTourism");
+  constructor(private http:HttpClient) { }
+
+  public getAllLieu() {
+    return this.http.get<Tourisme[]>("/lieu");
   }
 
-  public addTodo(newlieu: Tourisme): Observable<number> {
-    return this.http.post<number>('/getTourism', newlieu);
+  public getLieuId(id: string | null) {
+    return this.http.get<any>("/lieu/"+id).pipe(map((resp) => {
+      return resp.lieu
+    }));
   }
 
-
-  public getAllLieu():Tourisme[] | undefined {
-    this.getConfig()
-      .subscribe((res) => {
-      this.list_lieu = res;
-    })
-    return this.list_lieu
+  public getComment() {
+    return this.http.get<Comment[]>("/comment");
   }
 
-  public getLieu(id: string | null){
-    for (let lieu in this.getConfig()){
-      console.log("lieu")
-      console.log(lieu)
-    }
+  addComment(com:any): Observable<any>{
 
-
-    this.getConfig()
-      .subscribe((res) => {
-        this.list_lieu = res.filter((todo: Tourisme)=> {
-          todo.id == Number(id);
-        });
-      });
-    console.log("getLieu")
-    console.log(Number(id))
-    return(this.list_lieu)
+      const headers = { 'content-type': 'application/json'}
+      const body=JSON.stringify(com);
+      return this.http.post<Comment>('/comment', body,{'headers':headers})
+        .pipe(
+      catchError((err) => {
+          console.error(err);
+          throw err;
+        }
+      )
+        );
   }
+
 }
 
 

@@ -1,9 +1,9 @@
-<section class="py-20 overflow-hidden my-4" *ngIf="lieu_list" >
-  <div class="container my-4" *ngFor=" let lieu of lieu_list">
+<section class="py-20 overflow-hidden my-4" *ngIf="lieu" >
+  <div class="container my-4" >
     <div class="row mb-24">
       <div class="col-12 col-md-6 mb-8 mb-md-0">
         <div class="position-relative mb-10" style="height: 564px;">
-          <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+          <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="{{lieu.image}}" alt="">
         </div>
         <div>
         </div>
@@ -11,11 +11,11 @@
       <div class="col-12 col-md-6">
         <div class="ps-lg-20">
           <div class="mb-10 pb-10 border-bottom">
-            <span class="text-secondary">Brille</span>
+            <span class="text-secondary">{{lieu.ville}}</span>
             <h1 class="mt-2 mb-6 mw-xl">{{lieu.name}}</h1>
 
             <div class="mb-8 d-flex">
-              <div *ngFor=" let data of [1,2,3,4,5] " class="">
+              <div *ngFor=" let data of tab_moyenne_note " class="">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
                 <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
               </svg>
@@ -23,10 +23,10 @@
 
             </div>
 
-            <p class="mw-md pt-2 text-secondary">Maecenas commodo libero ut molestie dictum. Morbi placerat eros id porttitor sagittis.</p>
+            <p class="mw-md pt-2 text-secondary">{{lieu.comment}}</p>
           </div>
           <div class="row mb-14 mt-4">
-            <div class="col-12 col-xl-8 mb-4 mb-xl-0"><a class="btn w-50 btn_green" href="#">Ajouter un commentaire</a></div>
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0"><a class="btn w-50 btn_green" href="/add_comment/{{lieu.id}}/">Ajouter un commentaire</a></div>
             <div class="col-12 col-xl-4">
               <a class="h-100 ms-auto ms-sm-0 flex-shrink-0 d-inline-flex me-4 align-items-center justify-content-center rounded-2 border" href="#" style="width: 64px; min-height: 52px;">
                 <svg width="27" height="27" viewbox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" class="color-danger">
@@ -35,20 +35,46 @@
               </a>
             </div>
           </div>
-          <div class="d-flex align-items-center">
+          <div class=" align-items-center" *ngIf="list_comment">
             <p class="me-8 mb-0 text-secondary fw-bold text-uppercase">Liste des commentaires</p>
-            <a class="me-1" href="#" style="width: 32px; height: 32px;">
-              <img class="img-fluid" src="yofte-assets/buttons/facebook-circle.svg" alt="">
-            </a>
-            <a class="me-1" href="#" style="width: 32px; height: 32px;">
-              <img class="img-fluid" src="yofte-assets/buttons/instagram-circle.svg" alt="">
-            </a>
-            <a href="#" style="width: 32px; height: 32px;">
-              <img class="img-fluid" src="yofte-assets/buttons/twitter-circle.svg" alt="">
-            </a>
+
+                <div class="container mt-1 d-flex " >
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <ul class="list-unstyled " *ngFor=" let comment of list_comment ">
+                          <li class="media my-1 d-flex" >
+                            <div class="ml-5 mt-2">
+                              <span class="round">
+                                <img class="img"  src="../../../assets/images/logo_user.png" >
+                              </span>
+                            </div>
+                            <div class="media-body ">
+                              <div class="row ">
+                                <div class="mb-8 d-flex">
+
+                                  <h6 class="user me-4 mt-1">{{comment.pseudo}}</h6>
+                                  <div class=" pb-2" *ngFor=" let data of comment.tab_note ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                    </svg>
+                                  </div>
+                                </div>
+                                <p class="text ms-4">{{comment.comment}}</p>
+
+                              </div>
+                            </div>
+
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
 </section>

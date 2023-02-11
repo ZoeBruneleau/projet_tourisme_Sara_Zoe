@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
+import { createServer, Model, Response } from "miragejs"
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 if (environment.production) {
@@ -9,13 +9,16 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
-  import { createServer, Model, Response } from "miragejs"
+
+
+
 
 createServer({
   models: {
     lieu: Model,
     comment: Model,
     user: Model,
+
 
   },
   routes() {
@@ -53,6 +56,7 @@ createServer({
 
     });
 
+
     this.get("/lieu", function (schema, request) {
       return schema.db['lieus']
 
@@ -68,6 +72,7 @@ createServer({
       return schema.db['comments']
 
     });
+
 
     this.get("/liste", function (schema, request) {
       return schema.db['liste']
@@ -671,6 +676,5 @@ createServer({
 
 
 })
-
 
 
