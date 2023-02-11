@@ -15,7 +15,7 @@
             <h1 class="mt-2 mb-6 mw-xl">{{lieu.name}}</h1>
 
             <div class="mb-8 d-flex">
-              <div *ngFor=" let data of [1,2,3,4,5] " class="">
+              <div *ngFor=" let data of tab_moyenne_note " class="">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
                 <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
               </svg>
@@ -44,7 +44,7 @@
                       <div class="card">
                         <ul class="list-unstyled " *ngFor=" let comment of list_comment ">
                           <li class="media my-1 d-flex" >
-                            <div class="ml-5">
+                            <div class="ml-5 mt-2">
                               <span class="round">
                                 <img class="img"  src="../../../assets/images/logo_user.png" >
                               </span>
@@ -53,8 +53,8 @@
                               <div class="row ">
                                 <div class="mb-8 d-flex">
 
-                                  <h6 class="user me-4">{{comment.pseudo}}</h6>
-                                  <div class=" mb-2" *ngFor=" let data of comment.tab_note ">
+                                  <h6 class="user me-4 mt-1">{{comment.pseudo}}</h6>
+                                  <div class=" pb-2" *ngFor=" let data of comment.tab_note ">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
                                       <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
                                     </svg>

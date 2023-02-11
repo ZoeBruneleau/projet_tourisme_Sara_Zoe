@@ -13,11 +13,11 @@ import { Comment } from 'src/app/comment';
 export class LieuDetailComponent implements OnInit {
 
   public id?: string | null = ""
-  public lieu_list: Tourisme[] | undefined
   lieu: Tourisme | undefined
   list_comment: Comment[] =[]
-  number: number[] | undefined
 
+  tab_number_etoile:number[]= []
+  tab_moyenne_note:number[]= []
   constructor(private route: ActivatedRoute, private service: ServiceService) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.service.getLieuId(this.id)
@@ -31,6 +31,7 @@ export class LieuDetailComponent implements OnInit {
           if(res[comment].id_lieu ==Number(this.id)){
             this.list_comment.push(res[comment])
             res[comment].tab_note = Array(res[comment].note).fill(0);
+            this.define_note(res[comment].note)
           }
         }
       });
@@ -38,4 +39,14 @@ export class LieuDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  define_note(tab_note: number) {
+    this.tab_number_etoile.push(tab_note)
+    let somme = 0
+    for (let i = 0; i < this.tab_number_etoile.length; i++) {
+      somme += this.tab_number_etoile[i]
+    }
+    let moyenne = somme / this.tab_number_etoile.length
+    this.tab_moyenne_note = Array(Math.round(moyenne)).fill(0);
+
+  }
 }

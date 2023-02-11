@@ -14,10 +14,9 @@ import {Comment} from "../comment";
   providedIn: 'root'
 })
 export class ServiceService {
-  constructor(private http:HttpClient) { }
   public list_lieu?:Tourisme[];
 
-  baseURL: string = "http://localhost:3000/";
+  constructor(private http:HttpClient) { }
 
   public getAllLieu() {
     return this.http.get<Tourisme[]>("/lieu");
@@ -33,11 +32,10 @@ export class ServiceService {
     return this.http.get<Comment[]>("/comment");
   }
 
-  addTodo(com:any): Observable<any>{
+  addComment(com:any): Observable<any>{
 
       const headers = { 'content-type': 'application/json'}
       const body=JSON.stringify(com);
-      console.log(body)
       return this.http.post<Comment>('/comment', body,{'headers':headers})
         .pipe(
       catchError((err) => {
@@ -47,16 +45,6 @@ export class ServiceService {
       )
         );
   }
-
-  getComments(): Observable<Comment[]> {
-
-    return this.http.get<Comment[]>(this.baseURL + 'comment')
-  }
-  /*
-  addTodo(newlieu: Partial<{ pseudo: string | null; note: string | null; comment: string | null; }>): Observable<any>{
-    console.log(newlieu);
-    return this.http.post<any>("/comment", newlieu);
-  } */
 
 }
 

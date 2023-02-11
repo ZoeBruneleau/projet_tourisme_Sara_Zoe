@@ -46,7 +46,7 @@ export class AddCommentComponent implements OnInit {
     this.service.addTodo(this.commentForm.value)
      */
 
-    this.service.addTodo(this.commentForm.value).subscribe(data => {
+    this.service.addComment(this.commentForm.value).subscribe(data => {
       console.log(data)
       this.refresh();
     })
