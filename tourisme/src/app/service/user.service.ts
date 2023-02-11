@@ -12,15 +12,13 @@ import {Router} from "@angular/router";
 export class UserService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
+  public currUser? : User;
 
   constructor(private http:HttpClient , private router :Router) {
     const token = localStorage.getItem('profanis_auth');
     this._isLoggedIn$.next(!!token);
   }
 
-
-  public listUser? : User[];
-  public currUser? : User;
 
   getUserConfig(){
     return this.http.get<User[]>("/user")
@@ -31,20 +29,15 @@ export class UserService {
       return resp.user;
     }));
 
+  }
+
+  getUserList(id:string){
 
   }
 
   subcribe(sub:any) {
     const headers = { 'content-type': 'application/json'}
-    //const body=JSON.stringify(sub);
-    /*
-    {id: 10,
-      name: sub.name,
-      firstName: sub.firstName,
-      mdp:sub.mdp,
-      mail: sub.mail,
-      ville: sub.ville,
-      CP: sub.CP} */
+
     const body ={id: 10,
       name: sub.name,
       firstName: sub.firstName,

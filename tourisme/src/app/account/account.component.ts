@@ -15,7 +15,7 @@ export class AccountComponent implements OnInit {
 
   public currUser : User | undefined ;
   public user :User[] =[];
-  public userListConnected! : User[];
+  public list : Tourisme[] = [];
 
   public id?: string | null ="";
 
@@ -28,6 +28,7 @@ export class AccountComponent implements OnInit {
       this.id = this.route.snapshot.paramMap.get('id') ;
       this.getCurrUserById(this.id);
     }
+
 
 
   }

@@ -23,7 +23,7 @@ createServer({
 
     this.get('getUser', () => require("./app/user.json"));
     this.get('/getTourism', () => require('./app/mock.tourisme.json'));
-    this.post('/login', () => require('./app/user.json'));
+    //this.post('/login', () => require('./app/user.json'));
 
     this.post("/comment",  function(schema, request) {
       console.log("post data")
@@ -33,6 +33,23 @@ createServer({
 
     this.get("/user", function (schema, request) {
       return schema.db['users']
+
+    });
+
+    this.get("/user/:id", function (schema, request) {
+      let id = request.params['id']
+      return schema.find("user", id)
+
+    });
+
+    this.post("/user", function (schema, request) {
+      let attrs = JSON.parse(request.requestBody);
+      return schema.create("user", attrs);
+
+    });
+
+    this.post("/login", function (schema, request) {
+      return schema.db['login']
 
     });
 
@@ -52,13 +69,44 @@ createServer({
 
     });
 
+    this.get("/liste", function (schema, request) {
+      return schema.db['liste']
 
-
+    });
 
 
   },
   seeds(server) {
     server.db.loadData({
+      liste :[
+        {
+          id: 0,
+          idU : 1,
+          idL : 1
+        },
+        {
+          id: 1,
+          idU : 1,
+          idL : 2
+        },
+        {
+          id: 2,
+          idU : 1,
+          idL : 3
+        },
+        {
+          id: 3,
+          idU : 1,
+          idL : 4
+        },
+
+      ],
+      login:[
+        {
+          "mail": "S@gmail.com",
+          "mdp" : "123"
+
+        }],
       users:[
         {
           "id": 1,
