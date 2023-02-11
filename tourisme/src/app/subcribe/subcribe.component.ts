@@ -16,13 +16,12 @@ export class SubcribeComponent implements OnInit {
   }
 
   public subcribeForm = new FormGroup({
-    prenom : new FormControl('',Validators.required),
-    nom : new FormControl('', Validators.required),
+    name : new FormControl('',Validators.required),
+    firstName: new FormControl('', Validators.required),
     ville : new FormControl('', Validators.required),
-    cp : new FormControl('', Validators.required),
+    CP : new FormControl('', Validators.required),
     mdp : new FormControl('', Validators.required),
     mdp2 : new FormControl('', Validators.required),
-    age: new FormControl(''),
     mail : new FormControl('',[Validators.required, Validators.email]),
     cgu : new FormControl(''),
   })
@@ -38,9 +37,8 @@ export class SubcribeComponent implements OnInit {
 
     }
      else {
-      alert(this.subcribeForm.value);
-      console.log(this.subcribeForm.value);
-      this.router.navigate(['/home']);
+        this.service.subcribe(this.subcribeForm.getRawValue())
+
     }
 
   }
