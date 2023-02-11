@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../../service/user.service";
+import {User} from "../../User";
 
 @Component({
   selector: 'app-account-edit',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountEditComponent implements OnInit {
 
-  constructor() { }
+ user: User | undefined ;
+ id : number =0;
+
+
+  constructor(private service : UserService) {
+   this.service.getUserById(localStorage.getItem("id"))
+      .subscribe((res) => {
+        this.user = res;
+        this.id = res.id;
+      });
+
+  }
 
   ngOnInit(): void {
+  }
+  public editForm = new FormGroup({
+    name : new FormControl(Validators.required),
+    firstName: new FormControl('', Validators.required),
+    ville : new FormControl('', Validators.required),
+    CP : new FormControl('', Validators.required),
+    mail : new FormControl('',[Validators.required, Validators.email]),
+
+  })
+
+
+
+  save(){
+      this.service.edit(this.editForm.getRawValue(),this.id)
+
   }
 
 }

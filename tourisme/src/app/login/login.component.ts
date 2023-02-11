@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
   public id? : number ;
   public mdp : string = "";
   public mail : string = "";
+  public loginForm = new FormGroup({
+    mail: new FormControl('', Validators.required),
+    mdp: new FormControl('', Validators.required)
+  })
 
 
   constructor( private router: Router ,private serviceUser:UserService, private authService:AuthService ) {
@@ -54,10 +58,7 @@ export class LoginComponent implements OnInit {
         }
       );
   }
-  public loginForm = new FormGroup({
-    mail: new FormControl('', Validators.required),
-    mdp: new FormControl('', Validators.required)
-  })
+
 
   public checkmail() {
     let m = this.loginForm.get('mail')?.value;

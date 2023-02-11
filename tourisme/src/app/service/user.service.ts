@@ -55,10 +55,6 @@ export class UserService {
   }
 
 
-
-
-
-
   subcribe(sub:any) {
     const headers = { 'content-type': 'application/json'}
 
@@ -74,6 +70,24 @@ export class UserService {
       alert("Merci pour votre inscription, bienvenue chez TripExperiences !");
       this.router.navigate(["/home"]);
     })
+  }
+
+  edit(el:any, id?:number){
+    const headers = { 'content-type': 'application/json'}
+
+    const body ={id: id,
+      name: el.name,
+      firstName: el.firstName,
+      mdp:el.mdp,
+      mail: el.mail,
+      ville: el.ville,
+      CP: el.CP}
+
+    return this.http.put<User>('/user' ,body,{'headers':headers}).subscribe((res: any) => {
+      alert("Vos informations ont été modifiés");
+      this.router.navigate(["/home"]);
+    })
+
   }
 
 

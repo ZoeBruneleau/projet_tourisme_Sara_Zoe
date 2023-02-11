@@ -29,11 +29,14 @@ export class AccountComponent implements OnInit {
       this.id = this.route.snapshot.paramMap.get('id') ;
       this.getCurrUserById(this.id);
     }
+
     this.service.getUserList(this.id);
 
 
 
   }
+
+
 
   getCurrUserById(id:string | null){
     this.service.getUserById(id)
