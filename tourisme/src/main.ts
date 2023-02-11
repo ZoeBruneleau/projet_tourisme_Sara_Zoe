@@ -18,9 +18,6 @@ new Server({
     this.get('/getTourism', () => require('./app/mock.tourisme.json'));
     this.post('/login', () => require('./app/user.json'));
 
-
-
-
   }
 })
 
