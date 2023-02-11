@@ -22,7 +22,7 @@ export class UserService {
   public currUser? : User;
 
   getUserConfig(){
-    return this.http.get<User[]>("/getUser")
+    return this.http.get<User[]>("/user")
   }
 
   public getListUser() {
