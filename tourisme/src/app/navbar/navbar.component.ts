@@ -13,10 +13,10 @@ export class NavbarComponent implements OnInit {
   public currUser : User | undefined ;
   public userListConnected : User[]=[];
 
-  public id : User | undefined ;
+  public id : number ;
 
   constructor(private serviceUser:UserService) {
-
+    this.id = Number(localStorage.getItem("id"));
 
   }
 

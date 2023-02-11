@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from "../User";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs";
-import {tap} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {FormControl, ɵFormGroupRawValue, ɵGetProperty, ɵTypedOrUntyped} from "@angular/forms";
 
 @Injectable({
@@ -25,11 +25,17 @@ export class UserService {
     return this.http.get<User[]>("/user")
   }
 
-  public getListUser() {
-    return this.getUserConfig().subscribe((res) => {
-      this.listUser = res;
-    })
+  getUserById(id: string | null){
+    return this.http.get<any>("/user/"+id).pipe(map((resp) => {
+      return resp.users;
+    }));
+
+
   }
+
+
+
+
 
 
 }

@@ -33,9 +33,9 @@ export class AccountComponent implements OnInit {
   }
 
   getCurrUserById(id:string | null){
-    this.service.getUserConfig()
+    this.service.getUserById(id)
       .subscribe((res) => {
-        this.userListConnected = res.filter((todo: User) => todo.id == Number(id));
+        this.currUser = res;
       });
 
   }

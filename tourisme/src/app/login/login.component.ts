@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
         if (this.userListConnected != undefined) {
           this.currUser = this.userListConnected[0];
           if (this.currUser.mail === m && this.currUser.mdp === mdp) {
+              localStorage.setItem("id",this.currUser.id.toString());
             alert("Connexion réussie");
 
             this.router.navigate(['/account/' ]);

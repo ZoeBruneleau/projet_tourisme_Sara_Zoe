@@ -22,7 +22,6 @@ export class AuthService {
     const token = localStorage.getItem('token');
     this._isLoggedIn$.next(!!token);
     return !this.jwtHelper.isTokenExpired(token);
-
   }
   userLogin(login:any):Observable<boolean>{
 
@@ -37,7 +36,7 @@ export class AuthService {
             return false;
           }
           localStorage.setItem("access_token", token);
-          localStorage.setItem("id", login.mail);
+          localStorage.setItem("username", login.mail);
           this._isLoggedIn$.next(true);
           this.log(login.mail as string,login.mdp as string);
           const decodedUser = this.jwtHelper.decodeToken(token);
@@ -49,8 +48,6 @@ export class AuthService {
     }
     return of(false);
 
-
-
   }
 
   log(mail : string, mdp :string) {
@@ -58,6 +55,8 @@ export class AuthService {
 
     })
   };
+
+
 
 
 
