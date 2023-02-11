@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import {HttpClient} from "@angular/common/http";
-import {Tourisme} from "../Tourisme";
+import {Tourisme} from "../mock/Tourisme";
 
 @Component({
   selector: 'app-map',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../service/user.service";
-import {User} from "../User";
+import {User} from "../mock/User";
 
 @Component({
   selector: 'app-account',
