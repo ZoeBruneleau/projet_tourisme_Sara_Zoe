@@ -44,14 +44,13 @@
 
           <div class="tab-pane show active" id="about-me">
 
-            <h5 class="mb-4 text-uppercase">Ma liste d'envie</h5>
+            <h5 class="mb-4 text-uppercase" *ngIf="list" >Ma liste d'envie <img class="img"  src="../../assets/images/heart.png" > </h5>
 
-            <div class=" bg-light" *ngIf="list">
+            <div class="list-group"   *ngFor=" let data of list "style="width: 100%;">
+
+                <a  class="not_a list-group-item list-group-item-action"  href="/lieu/{{data.id}}/"> {{data.name}}, {{data.ville}} </a>
 
 
-                  <div *ngFor=" let data of list " >
-                    <p> {{data.name}}</p>
-                  </div>
             </div>
 
           </div>
