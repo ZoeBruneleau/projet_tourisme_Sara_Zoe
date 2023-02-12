@@ -3,7 +3,6 @@ import {User} from "../User";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs";
 import {map, tap} from "rxjs/operators";
-import {FormControl, ɵFormGroupRawValue, ɵGetProperty, ɵTypedOrUntyped} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Tourisme} from "../Tourisme";
 import {Liste} from "../Liste";
@@ -13,7 +12,6 @@ import {Liste} from "../Liste";
 })
 export class UserService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this._isLoggedIn$.asObservable();
   public currUser? : User;
 
   private list?:Liste[];
