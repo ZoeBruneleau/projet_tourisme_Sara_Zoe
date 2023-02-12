@@ -69,9 +69,9 @@ export class TopComponent implements OnInit {
             l.note = s/nb;
             this.list_lieuNote.push(l);
         }
+         this.list_lieuNote.sort((a, b) => b.note-a.note);
+
         });
-
-
 
     });
 

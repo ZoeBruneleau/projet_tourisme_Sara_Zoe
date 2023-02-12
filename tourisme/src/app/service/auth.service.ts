@@ -15,7 +15,7 @@ export class AuthService {
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   constructor(private http:HttpClient) {
-    this.loadUserInfo();
+   // this.loadUserInfo();
   }
 
   public isAuthenticated(): boolean {
@@ -65,7 +65,7 @@ export class AuthService {
     if (!userdata) {
       const access_token = localStorage.getItem('id');
       if (access_token) {
-        userdata = this.jwtHelper.decodeToken(access_token);
+        //userdata = this.jwtHelper.decodeToken(access_token);
         this.userInfo.next(userdata);
       }
     }
