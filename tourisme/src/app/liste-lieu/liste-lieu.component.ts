@@ -34,7 +34,7 @@ export class ListeLieuComponent implements OnInit {
     let search = this.searchForm.value.search
     let list_lieu;
     if (search != '') {
-      let lieu: Tourisme = {comment: "", id: 0, image: "", latitude: 0, longitude: 0, name: "", ville: "", wiki: "", note : 0};
+      let lieu: Tourisme = {comment: "", id: 0, image: "", latitude: 0, longitude: 0, name: "", ville: "", wiki: ""};
       for (let number in this.copie_list_lieu) {
         lieu = this.copie_list_lieu[Number(number)]
         if (lieu.name.toLowerCase().includes(String(search).toLowerCase()) || lieu.ville.toLowerCase().includes(String(search).toLowerCase())) {

@@ -11,7 +11,7 @@ export class Tourisme {
   wiki!: string;
   ville!: string;
 
-  note!: number;
+
 
 
 

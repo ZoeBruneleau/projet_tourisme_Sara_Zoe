@@ -32,6 +32,10 @@ export class ServiceService {
     return this.http.get<Comment[]>("/comment");
   }
 
+  public getCommentByLieuId(idl:number) {
+    return this.http.get<Comment[]>("/comment/"+idl);
+  }
+
   addComment(com:any): Observable<any>{
 
       const headers = { 'content-type': 'application/json'}
