@@ -37,8 +37,6 @@ export class AccountComponent implements OnInit {
 
   }
 
-
-
   getCurrUserById(id:string | null){
     this.service.getUserById(id)
       .subscribe((res) => {
@@ -53,7 +51,6 @@ export class AccountComponent implements OnInit {
     this.router.navigate(['/home']);
 
   }
-
 
   ngOnInit(): void {
   }

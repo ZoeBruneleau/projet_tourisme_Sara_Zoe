@@ -24,8 +24,7 @@ export class TopComponent implements OnInit {
       })
 
   });
-
-  //this.list_lieu?.forEach(l : Tourisme )
+    this.list_lieu = this.list_lieu?.slice(0,5);
   }
 
   ngOnInit(){

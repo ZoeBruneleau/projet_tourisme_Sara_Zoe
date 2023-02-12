@@ -3,7 +3,7 @@
   <div class="w-75 mx-auto py-5 container">
     <div class="card-group row row-cols-3">
 
-      <div *ngFor=" let data of list_lieu " class="col">
+      <div *ngFor=" let data of list_lieu.slice(0,5) " class="col">
         <div  class="card m-3">
           <a class="not_a" href="/lieu/{{data.id}}/">
             <img class="card-img-top" src="{{data.image}}" alt="Card image cap">
