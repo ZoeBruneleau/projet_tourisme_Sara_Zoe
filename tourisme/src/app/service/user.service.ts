@@ -17,7 +17,7 @@ export class UserService {
   public currUser? : User;
 
   private list?:Liste[];
-  private lieus?:Tourisme[];
+  public lieus:Tourisme[] = [];
 
   constructor(private http:HttpClient , private router :Router) {
     const token = localStorage.getItem('profanis_auth');
@@ -44,14 +44,10 @@ export class UserService {
 
       this.list?.forEach(value =>
         this.http.get<any>("/lieu/"+value.idL).subscribe((resp) => {
-
-          this.lieus = this.lieus + resp.lieus
-          return this.lieus;
+          this.lieus?.push(resp.lieu)
         }) );
 
       });
-
-
   }
 
 

@@ -31,6 +31,7 @@ export class AccountComponent implements OnInit {
     }
 
     this.service.getUserList(this.id);
+    this.list=this.service.lieus
 
 
 
