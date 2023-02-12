@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {User} from "../mock/User";
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, catchError, Observable} from "rxjs";
 import {map, tap} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {Tourisme} from "../mock/Tourisme";
 import {Liste} from "../Liste";
+import {Comment} from "../mock/comment";
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class UserService {
   constructor(private http:HttpClient , private router :Router) {
     const token = localStorage.getItem('profanis_auth');
     this._isLoggedIn$.next(!!token);
-
-
+    let idUser = localStorage.getItem("id");
+    this.getUserList(idUser)
   }
 
 
@@ -47,6 +48,34 @@ export class UserService {
         }) );
 
       });
+  }
+
+  addLieuList(idUser:number, idLieu:number): Observable<any>{
+    const headers = { 'content-type': 'application/json'}
+    let liste = {idU: idUser, idL: idLieu}
+    const body=JSON.stringify(liste);
+    return this.http.post<Liste>('/liste', body,{'headers':headers})
+      .pipe(
+        catchError((err) => {
+            console.error(err);
+            throw err;
+          }
+        )
+      );
+  }
+
+  delete_lieu_liste(){
+    this.http.delete('liste/1')
+      .subscribe(() => console.log('Delete successful'));
+  }
+  not_in_liste(idUser:number, idLieu:number){
+    console.log(this.lieus)
+    for(let lieu in this.lieus){
+      if(this.lieus[lieu].id==idLieu){
+        return false
+      }
+    }
+    return true
   }
 
 

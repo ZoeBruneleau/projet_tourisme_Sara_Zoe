@@ -29,9 +29,13 @@ createServer({
     //this.post('/login', () => require('./app/user.json'));
 
     this.post("/comment",  function(schema, request) {
-      console.log("post data")
       let attrs = JSON.parse(request.requestBody)
       return schema.create("comment", attrs)
+    });
+
+    this.post("/liste",  function(schema, request) {
+      let attrs = JSON.parse(request.requestBody)
+      return schema.create("liste", attrs)
     });
 
     this.get("/user", function (schema, request) {
