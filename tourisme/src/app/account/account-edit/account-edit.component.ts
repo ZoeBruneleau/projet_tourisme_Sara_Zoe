@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../service/user.service";
-import {User} from "../../User";
+import {User} from "../../mock/User";
 
 @Component({
   selector: 'app-account-edit',

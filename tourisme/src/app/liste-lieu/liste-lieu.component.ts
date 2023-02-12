@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Tourisme} from "../Tourisme";
+import {Tourisme} from "../mock/Tourisme";
 import {ServiceService} from "../service/service.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../service/user.service";
-import {User} from "../User";
-import {Tourisme} from "../Tourisme";
+import {Tourisme} from "../mock/Tourisme";
 import {AuthService} from "../service/auth.service";
-
+import {User} from "../mock/User";
 
 @Component({
   selector: 'app-account',
