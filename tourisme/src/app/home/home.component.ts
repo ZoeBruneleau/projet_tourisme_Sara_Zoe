@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServiceService} from "../service/service.service";
-import {User} from "../User";
+import {User} from "../mock/User";
 import {lastValueFrom, Observable} from "rxjs";
 
 @Component({

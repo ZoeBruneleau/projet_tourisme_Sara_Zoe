@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ServiceService} from "../../../service/service.service";
-import {Tourisme} from "../../../Tourisme";
-import { Comment } from "../../../comment";
+import {Tourisme} from "../../../mock/Tourisme";
+import { Comment } from "../../../mock/comment";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({

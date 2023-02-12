@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {User} from "../User";
+import {User} from "../mock/User";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs";
 import {map, tap} from "rxjs/operators";

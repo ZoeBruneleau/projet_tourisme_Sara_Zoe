@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Tourisme} from "../Tourisme";
+import {Tourisme} from "../mock/Tourisme";
 import {DomUtil} from "leaflet";
 import get = DomUtil.get;
 import {catchError, filter, Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
 import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
-import {User} from "../User";
-import {Comment} from "../comment";
+import {User} from "../mock/User";
+import {Comment} from "../mock/comment";
 
 
 @Injectable({
