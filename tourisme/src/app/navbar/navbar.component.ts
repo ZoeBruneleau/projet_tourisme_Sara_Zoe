@@ -9,7 +9,7 @@ import {AuthService} from "../service/auth.service";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  private id: number = 0;
+  public id: number = 0;
   public is_connect: boolean = false
 
   constructor(private serviceUser: UserService) {
