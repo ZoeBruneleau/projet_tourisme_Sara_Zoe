@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../service/user.service";
 import {User} from "../../mock/User";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-account-edit',
@@ -13,7 +14,7 @@ export class AccountEditComponent implements OnInit {
   public user: User | undefined;
   private id: number = 0;
 
-  constructor(private service: UserService) {
+  constructor(private service: UserService, private router:Router) {
     this.service.getUserById(localStorage.getItem("id"))
       .subscribe((res) => {
         this.user = res;
@@ -34,8 +35,11 @@ export class AccountEditComponent implements OnInit {
 
   })
 
-  save() {
-    this.service.edit(this.editForm.getRawValue(), this.id)
+  save() : void{
+
+    this.service.edit(this.editForm.getRawValue(), this.id);
+
+
   }
 
 }

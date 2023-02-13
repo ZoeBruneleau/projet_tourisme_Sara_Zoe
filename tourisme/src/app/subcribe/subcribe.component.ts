@@ -31,7 +31,7 @@ export class SubcribeComponent implements OnInit {
   })
 
 
-  save() {
+  public save() : void {
 
     if (this.mdp != this.mdp2) {
       alert("Veuillez entrez des mot de passe identiques");

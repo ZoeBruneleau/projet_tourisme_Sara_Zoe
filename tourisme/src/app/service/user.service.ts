@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {User} from "../mock/User";
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, catchError, Observable} from "rxjs";
+import {BehaviorSubject, catchError, Observable, Subscription} from "rxjs";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {Tourisme} from "../mock/Tourisme";
@@ -24,18 +24,18 @@ export class UserService {
   }
 
 
-  getUserConfig() {
+  public getUserConfig():Observable<User[]> {
     return this.http.get<User[]>("/user")
   }
 
-  getUserById(id: string | null) {
+  public getUserById(id: string | null) : Observable<User> {
     return this.http.get<any>("/user/" + id).pipe(map((resp) => {
       return resp.user;
     }));
 
   }
 
-  getUserList(id: string | null) {
+  public getUserList(id: string | null) : Subscription {
     return this.http.get<any>("/liste/" + id).subscribe((res) => {
       this.list = res;
 
@@ -47,12 +47,12 @@ export class UserService {
     });
   }
 
-  getList(id: string | null) {
-    return this.http.get<any>("/liste/" + id)
+  public getList(id: string | null) : Observable<any> {
+    return this.http.get<Liste>("/liste/" + id);
   }
 
 
-  addLieuList(idUser: number, idLieu: number): Observable<any> {
+  public addLieuList(idUser: number, idLieu: number): Observable<Liste> {
     const headers = {'content-type': 'application/json'}
     let liste = {idU: idUser, idL: idLieu}
     const body = JSON.stringify(liste);
@@ -66,7 +66,7 @@ export class UserService {
       );
   }
 
-  not_in_liste(idUser: number, idLieu: number) {
+  public not_in_liste(idUser: number, idLieu: number) : boolean {
     for (let lieu in this.lieus) {
       if (this.lieus[lieu].id == idLieu) {
         return false
@@ -76,7 +76,7 @@ export class UserService {
   }
 
 
-  subcribe(sub: any) {
+  public subcribe(sub: any) : Subscription {
     const headers = {'content-type': 'application/json'}
     const body = {
       id: 10,
@@ -90,12 +90,12 @@ export class UserService {
 
     return this.http.post<User>('/user', body, {'headers': headers}).subscribe((res: any) => {
       alert("Merci pour votre inscription, bienvenue chez TripExperiences !");
-      this.router.navigate(["/home"]);
-    })
+      this.router.navigate(["/home"]).then(r => "");
+    });
   }
 
-  edit(el: any, id: number) {
-    const headers = {'content-type': 'application/json'}
+  public edit(el: any, id: number) : Subscription{
+    const headers = {'content-type': 'application/json'};
     const body = {
       id: id,
       name: el.name,
@@ -104,13 +104,13 @@ export class UserService {
       mail: el.mail,
       ville: el.ville,
       CP: el.CP
-    }
+    };
 
     return this.http.put<User>('/user', body, {'headers': headers}).subscribe((res: any) => {
       alert("Vos informations ont été modifiés");
-      this.router.navigate(["/home"]);
-    })
+      this.router.navigate(['/home']).then();
+    });
 
-  }
+  };
 
 }

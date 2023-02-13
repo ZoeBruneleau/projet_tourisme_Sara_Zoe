@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of} from "rxjs";
+import {BehaviorSubject, Observable, of, Subscription} from "rxjs";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {map} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient, private router :Router) {}
 
-  userLogin(login:any):Observable<boolean>{
+  public userLogin(login:any):Observable<boolean>{
 
     if(login &&
       login.mail &&
@@ -42,30 +43,17 @@ export class AuthService {
 
   }
 
-  log(mail : string, mdp :string) {
+  public log(mail : string, mdp :string) : Subscription {
+    this.router.navigate(['/home']);
     return this.http.post('/login',{mail,mdp} ).subscribe((res: any) => {
 
     })
   };
 
 
-
-
-
-  loadUserInfo() {
-    let userdata = this.userInfo.getValue();
-    if (!userdata) {
-      const access_token = localStorage.getItem('id');
-      if (access_token) {
-        //userdata = this.jwtHelper.decodeToken(access_token);
-        this.userInfo.next(userdata);
-      }
-    }
-  }
-
-  logout(){
+  public logout() : void{
+    this.router.navigate(['/home']).then(r => "");
     localStorage.clear();
-
   }
 
 }

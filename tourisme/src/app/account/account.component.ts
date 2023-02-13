@@ -34,19 +34,17 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  getCurrUserById(id: string | null) {
+  private getCurrUserById(id: string | null) :void {
     this.service.getUserById(id)
       .subscribe((res) => {
         this.currUser = res;
       });
 
   }
-
-  logout() {
+  public logout(): void {
     this.authService.logout();
+    this.router.navigate(['/home'])
     alert("Vous êtes déconnecté");
-    this.router.navigate(['/home']);
 
   }
 

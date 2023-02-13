@@ -40,21 +40,19 @@ createServer({
     });
 
     this.put("/user", function (schema, request) {
-
-      return schema.db['users']
       let attrs = JSON.parse(request.requestBody);
       return schema.create("user", attrs);
     });
 
     this.get("/liste/:idU", function (schema, request) {
-      let idU = request.params['idU']
-      return schema.db['liste'].where({ idU: idU })
+      let idU = request.params['idU'];
+      return schema.db['liste'].where({ idU: idU });
     });
 
 
     this.get("/user/:id", function (schema, request) {
-      let id = request.params['id']
-      return schema.find("user", id)
+      let id = request.params['id'];
+      return schema.find("user", id);
 
     });
 
@@ -65,38 +63,33 @@ createServer({
     });
 
     this.post("/login", function (schema, request) {
-      return schema.db['login']
-
+      return schema.db['login'];
     });
 
 
     this.get("/lieu", function (schema, request) {
-      return schema.db['lieus']
-
+      return schema.db['lieus'];
     });
 
 
     this.get("/lieu/:id", function (schema, request) {
-      let id = request.params['id']
-      return schema.find("lieu", id)
-
+      let id = request.params['id'];
+      return schema.find("lieu", id);
     });
 
     this.get("/comment", function (schema, request) {
-      return schema.db['comments']
-
+      return schema.db['comments'];
     });
 
     this.get("/comment/:idL", function (schema, request) {
-      let idL = request.params['idL']
-      return schema.db['comments'].where({id_lieu: idL });;
+      let idL = request.params['idL'];
+      return schema.db['comments'].where({id_lieu: idL });
 
     });
 
 
     this.get("/liste", function (schema, request) {
-      return schema.db['liste']
-
+      return schema.db['liste'];
     });
 
 
