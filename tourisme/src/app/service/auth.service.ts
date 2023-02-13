@@ -12,17 +12,9 @@ export class AuthService {
   userInfo = new BehaviorSubject(null);
   jwtHelper = new JwtHelperService();
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this._isLoggedIn$.asObservable();
 
-  constructor(private http:HttpClient) {
-   // this.loadUserInfo();
-  }
+  constructor(private http:HttpClient) {}
 
-  public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    this._isLoggedIn$.next(!!token);
-    return !this.jwtHelper.isTokenExpired(token);
-  }
   userLogin(login:any):Observable<boolean>{
 
     if(login &&
