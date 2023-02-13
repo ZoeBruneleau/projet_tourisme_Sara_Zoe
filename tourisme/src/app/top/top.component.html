@@ -1,16 +1,16 @@
 <div class=" bg-light" *ngIf="list_lieu">
 
   <div class="w-75 mx-auto py-5 container">
-    <div class="card-group row row-cols-3">
+    <div class="card-group ">
 
-      <div *ngFor=" let data of list_lieuNote.slice(0,5) ;let indexOfelement=index; " class=" w-100 row">
+      <div *ngFor=" let data of list_lieuNote.slice(0,5) ;let indexOfelement=index; " class=" w-100 row no-gutter">
 
           <div class="m-3 col-md-2">
             <h4 class="title">  {{indexOfelement + 1}} </h4>
           </div>
 
         <div  class="card flex-row m-3 col-md-8">
-          <img class="card-img-left img" src="{{data.image}}" alt="Card image cap">
+          <img class=" img" src="{{data.image}}" alt="Card image cap">
           <a class="not_a" href="/lieu/{{data.id}}/">
             <div class="card-body">
         <div class="row">
@@ -26,11 +26,9 @@
               </div>
 
               </div>
-
               <p> {{data.comment | slice:0:100}} ... </p>
               <p> {{data.ville}}</p>
               <p> {{data.wiki}}</p>
-
         </div>
 
           </a>
