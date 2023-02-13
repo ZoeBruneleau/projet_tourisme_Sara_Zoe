@@ -15,7 +15,7 @@ export class AuthService {
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
   constructor(private http:HttpClient) {
-    this.loadUserInfo();
+   // this.loadUserInfo();
   }
 
   public isAuthenticated(): boolean {

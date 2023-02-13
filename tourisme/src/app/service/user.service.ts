@@ -8,12 +8,12 @@ import {Tourisme} from "../mock/Tourisme";
 import {Liste} from "../Liste";
 import {Comment} from "../mock/comment";
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this._isLoggedIn$.asObservable();
   public currUser? : User;
 
   private list?:Liste[];
@@ -95,7 +95,8 @@ export class UserService {
     })
   }
 
-  edit(el:any, id?:number){
+  edit(el:any, id:number){
+
     const headers = { 'content-type': 'application/json'}
 
     const body ={id: id,
@@ -105,6 +106,7 @@ export class UserService {
       mail: el.mail,
       ville: el.ville,
       CP: el.CP}
+
 
     return this.http.put<User>('/user' ,body,{'headers':headers}).subscribe((res: any) => {
       alert("Vos informations ont été modifiés");

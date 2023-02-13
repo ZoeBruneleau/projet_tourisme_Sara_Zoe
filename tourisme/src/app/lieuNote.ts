@@ -1,19 +1,14 @@
-export class Tourisme {
+export class LieuNote {
   id!: number;
   name!: string;
-  longitude!: number;
-  latitude!: number;
-
-  image!: string;
-
   comment!: string;
-
   wiki!: string;
   ville!: string;
 
+  note!: number;
 
+  image!: string;
 
-
-
+  tab! : Number[];
 
 }

@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 
 import { AddCommentComponent } from './liste-lieu/lieu-detail/add-comment/add-comment.component';
+import { TopComponent } from './top/top.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { AddCommentComponent } from './liste-lieu/lieu-detail/add-comment/add-co
     LieuDetailComponent,
 
     AddCommentComponent,
+     TopComponent,
 
   ],
   imports: [
