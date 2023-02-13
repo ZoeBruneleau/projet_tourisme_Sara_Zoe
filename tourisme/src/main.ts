@@ -48,7 +48,7 @@ createServer({
 
     this.get("/liste/:idU", function (schema, request) {
       let idU = request.params['idU']
-      return schema.db['liste'].where({ idU: idU })
+      return schema.db['listes'].where({ idU: idU })
     });
 
 
@@ -95,7 +95,7 @@ createServer({
 
 
     this.get("/liste", function (schema, request) {
-      return schema.db['liste']
+      return schema.db['listes']
 
     });
 
@@ -103,26 +103,26 @@ createServer({
   },
   seeds(server) {
     server.db.loadData({
-      liste :[
+      listes :[
         {
-          id: 0,
-          idU : 1,
-          idL : 1
+          "id": 0,
+          "idU" : 1,
+          "idL" : 1
         },
         {
-          id: 1,
-          idU : 1,
-          idL : 2
+          "id": 1,
+          "idU" : 1,
+          "idL" : 2
         },
         {
-          id: 2,
-          idU : 1,
-          idL : 3
+          "id": 2,
+          "idU" : 1,
+          "idL" : 3
         },
         {
-          id: 3,
-          idU : 1,
-          idL : 4
+          "id": 3,
+          "idU" : 1,
+          "idL" : 4
         },
 
       ],
@@ -140,7 +140,8 @@ createServer({
           "mdp": "123",
           "mail": "S@gmail.com",
           "ville" :  "Paris",
-          "CP" : 75005
+          "CP" : 75005,
+          "pseudo":"stephane.mo"
         },
         {
           "id": 2,
@@ -149,7 +150,9 @@ createServer({
           "mdp": "123",
           "mail": "L@gmail.com",
           "ville" :  "Paris",
-          "CP" : 75005
+          "CP" : 75005,
+          "pseudo":"loic.vert"
+
         }
       ],
       comments:[

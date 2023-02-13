@@ -26,7 +26,7 @@
             <p class="mw-md pt-2 text-secondary">{{lieu.comment}}</p>
           </div>
           <div class="row mb-14 mt-4">
-            <div class="col-12 col-xl-8 mb-4 mb-xl-0"><a class="btn w-50 btn_green" href="/add_comment/{{lieu.id}}/">Ajouter un commentaire</a></div>
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0"><a class="btn w-50 btn_green" (click)="addComment(lieu.id)">Ajouter un commentaire</a></div>
             <div class="col-12 col-xl-4" (click)="changeListeEnvie(lieu.id)">
               <a *ngIf="like" class="h-100 ms-auto ms-sm-0 flex-shrink-0 d-inline-flex me-4 align-items-center justify-content-center rounded-2 border"  style="width: 64px; min-height: 52px;">
                 <img class="img"  src="../../../assets/images/heart.png" >

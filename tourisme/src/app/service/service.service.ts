@@ -37,7 +37,6 @@ export class ServiceService {
   }
 
   addComment(com:any): Observable<any>{
-
       const headers = { 'content-type': 'application/json'}
       const body=JSON.stringify(com);
       return this.http.post<Comment>('/comment', body,{'headers':headers})

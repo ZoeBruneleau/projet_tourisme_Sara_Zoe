@@ -72,7 +72,6 @@ export class LieuDetailComponent implements OnInit {
           console.log(data)
         })
         this.like=true
-        this.userservice.getUserList(String(idUser))
       }
       else {
         console.log("in liste")
@@ -90,5 +89,14 @@ export class LieuDetailComponent implements OnInit {
         }
       });
     });
+  }
+
+  public addComment(idLieu: number){
+    if(this.idUser != 0){
+      this.router.navigate(['/add_comment/'+idLieu ])
+    }
+    else{
+      this.router.navigate(['/login/' ])
+    }
   }
 }

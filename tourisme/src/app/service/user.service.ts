@@ -57,7 +57,9 @@ export class UserService {
 
   addLieuList(idUser:number, idLieu:number): Observable<any>{
     const headers = { 'content-type': 'application/json'}
-    let liste = {idU: idUser, idL: idLieu}
+    let liste = new Liste()
+    liste.idL=idLieu
+    liste.idU=idUser
     const body=JSON.stringify(liste);
     return this.http.post<Liste>('/liste', body,{'headers':headers})
       .pipe(

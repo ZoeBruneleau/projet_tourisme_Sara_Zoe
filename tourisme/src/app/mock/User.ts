@@ -6,6 +6,8 @@ export interface User{
   mail: string;
   ville: string;
   CP: number;
+  pseudo: string;
+
 }
 
 

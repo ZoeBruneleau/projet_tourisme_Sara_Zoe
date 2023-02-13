@@ -1,6 +1,6 @@
-export interface Liste{
-  id: number;
-  idU: number;
-  idL: number;
+export class Liste{
+  id?: number;
+  idU?: number;
+  idL?: number;
 
 }
