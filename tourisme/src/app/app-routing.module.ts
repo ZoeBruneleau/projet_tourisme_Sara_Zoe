@@ -10,6 +10,7 @@ import {ListeLieuComponent} from "./liste-lieu/liste-lieu.component";
 import {LieuDetailComponent} from "./liste-lieu/lieu-detail/lieu-detail.component";
 import {AddCommentComponent} from "./liste-lieu/lieu-detail/add-comment/add-comment.component";
 import {TopComponent} from "./top/top.component";
+import {NotFoundComponent} from "./not-found/not-found.component";
 
 
 
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path : 'login', component: LoginComponent },
   { path : 'add_comment/:id', component: AddCommentComponent },
   { path : 'top5', component: TopComponent },
-  { path : '**', component:HomeComponent }
+  { path : '**', component:NotFoundComponent }
   ]
 
 @NgModule({
