@@ -5,6 +5,7 @@ import {Comment} from "../comment";
 import {LieuNote} from "../lieuNote";
 
 
+
 @Component({
   selector: 'app-top',
   templateUrl: './top.component.html',
@@ -13,36 +14,16 @@ import {LieuNote} from "../lieuNote";
 export class TopComponent implements OnInit {
   public top?:Tourisme[];
   public list_lieu?:Tourisme[];
-  private comment?:Comment[];
-  tab_number_etoile:number[]= []
-  tab_moyenne_note:number[]= []
-  list_comment: Comment[] =[]
-  list_lieuNote: LieuNote[] =[]
-  list_lieuNote2: LieuNote[] =[]
-
-  notes : Map<number,number>;
+  public list_lieuNote: LieuNote[] =[]
+  private notes : Map<number,number>;
 
   constructor(private service: ServiceService) {
-   /*
-    this.service.getAllLieu()
-      .subscribe((res) => {
-
-        this.list_lieu = res.sort(function (a, b) {
-          return (b.note -  a.note)
-      }
-
-  });*/
-
     this.notes = new Map<number,number>();
-
     this.service.getAllLieu()
       .subscribe((res) => {
         this.list_lieu = res;
         this.map();
       });
-
-
-
   }
 
   ngOnInit(){
@@ -64,9 +45,15 @@ export class TopComponent implements OnInit {
 
           if (s > 0){
             let l = new LieuNote();
+            let tab_note= [];
             l.id = value.id;
             l.name = value.name;
+            l.ville = value.ville;
+            l.image = value.image;
+            l.comment = value.comment;
             l.note = s/nb;
+            tab_note = Array(l.note).fill(0);
+            l.tab = tab_note;
             this.list_lieuNote.push(l);
         }
          this.list_lieuNote.sort((a, b) => b.note-a.note);

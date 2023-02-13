@@ -41,8 +41,6 @@ export class AccountEditComponent implements OnInit {
 
   }
 
-  /*let posts = user.blogPosts;
 
-posts.update('published', true);*/
 
 }

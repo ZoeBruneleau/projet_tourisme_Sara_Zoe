@@ -37,6 +37,7 @@ createServer({
     });
 
     this.put("/user", function (schema, request) {
+
       return schema.db['users']
       let attrs = JSON.parse(request.requestBody);
       return schema.create("user", attrs);

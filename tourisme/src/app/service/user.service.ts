@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {Tourisme} from "../Tourisme";
 import {Liste} from "../Liste";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -66,7 +67,8 @@ export class UserService {
     })
   }
 
-  edit(el:any, id?:number){
+  edit(el:any, id:number){
+
     const headers = { 'content-type': 'application/json'}
 
     const body ={id: id,
@@ -76,6 +78,7 @@ export class UserService {
       mail: el.mail,
       ville: el.ville,
       CP: el.CP}
+
 
     return this.http.put<User>('/user' ,body,{'headers':headers}).subscribe((res: any) => {
       alert("Vos informations ont été modifiés");
