@@ -19,14 +19,16 @@ export class LieuDetailComponent implements OnInit {
   tab_number_etoile:number[]= []
   tab_moyenne_note:number[]= []
   like:boolean=false
-  private idUser: string | null;
-
+  private idUser:number =0;
   constructor(private router: Router, private route: ActivatedRoute, private service: ServiceService, private userservice: UserService) {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.idUser = Number(localStorage.getItem("id"));
+    this.userservice.getUserList(String(this.idUser))
     this.get_lieu(this.id)
     this.getComments(this.id)
-    this.idUser = localStorage.getItem("id");
+    this.is_in_liste(localStorage.getItem("id"), this.id)
   }
+
   ngOnInit() {
 
   }
@@ -59,14 +61,6 @@ export class LieuDetailComponent implements OnInit {
     let moyenne = somme / this.tab_number_etoile.length
     this.tab_moyenne_note = Array(Math.round(moyenne)).fill(0);
   }
-
-  is_like(idUser:number, idLieu: number){
-    console.log(this.userservice.not_in_liste(idUser, Number(idLieu)))
-    if(idUser != 0 && !this.userservice.not_in_liste(idUser, Number(idLieu))){
-      this.like=true
-    }
-    console.log("this.like"+this.like)
-  }
   changeListeEnvie(idLieu: number){
     let idUser = Number(localStorage.getItem("id"));
     if(idUser == 0){
@@ -75,12 +69,26 @@ export class LieuDetailComponent implements OnInit {
     else{
       if(this.userservice.not_in_liste(idUser, Number(idLieu))){
         this.userservice.addLieuList(idUser, Number(idLieu)).subscribe(data => {
+          console.log(data)
         })
         this.like=true
+        this.userservice.getUserList(String(idUser))
       }
       else {
         console.log("in liste")
       }
     }
+  }
+
+  private is_in_liste(id: string | null, idLieu: string | null) {
+    let list
+    this.userservice.getList(id).subscribe((res) => {
+      list = res;
+      list.forEach((value: { idL: any; }) =>{
+        if (value.idL==Number(idLieu)){
+          this.like=true
+        }
+      });
+    });
   }
 }

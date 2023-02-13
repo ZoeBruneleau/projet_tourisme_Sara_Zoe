@@ -24,7 +24,7 @@ export class AccountComponent implements OnInit {
       this.id = this.service.currUser.id.toString();
       this.currUser = this.service.currUser ;
     }
-   else{
+    else{
       this.id = this.route.snapshot.paramMap.get('id') ;
       this.getCurrUserById(this.id);
     }

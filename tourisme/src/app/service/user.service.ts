@@ -22,8 +22,6 @@ export class UserService {
   constructor(private http:HttpClient , private router :Router) {
     const token = localStorage.getItem('profanis_auth');
     this._isLoggedIn$.next(!!token);
-    let idUser = localStorage.getItem("id");
-    this.getUserList(idUser)
   }
 
 
@@ -37,7 +35,6 @@ export class UserService {
     }));
 
   }
-
   getUserList(id: string | null)  {
     return this.http.get<any>("/liste/"+id).subscribe((res) => {
       this.list = res;
@@ -47,7 +44,15 @@ export class UserService {
           this.lieus?.push(resp.lieu)
         }) );
 
-      });
+    });
+  }
+
+  getList(id: string | null)  {
+    return this.http.get<any>("/liste/"+id)
+  }
+
+  getLieu(idL: string | null){
+    return this.http.get<any>("/lieu/"+idL)
   }
 
   addLieuList(idUser:number, idLieu:number): Observable<any>{
@@ -63,13 +68,7 @@ export class UserService {
         )
       );
   }
-
-  delete_lieu_liste(){
-    this.http.delete('liste/1')
-      .subscribe(() => console.log('Delete successful'));
-  }
   not_in_liste(idUser:number, idLieu:number){
-    console.log(this.lieus)
     for(let lieu in this.lieus){
       if(this.lieus[lieu].id==idLieu){
         return false

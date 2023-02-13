@@ -9,19 +9,18 @@ import {AuthService} from "../service/auth.service";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  public currUser : User | undefined ;
-  public userListConnected : User[]=[];
-
-  public id : number ;
+  public id : number = 0 ;
+  public is_connect :boolean = false
 
   constructor(private serviceUser:UserService) {
-    this.id = Number(localStorage.getItem("id"));
-
   }
 
 
   ngOnInit(): void {
+    this.id = Number(localStorage.getItem("id"));
+    if(this.id != 0) {
+      this.is_connect = true
+    }
   }
 
 }
