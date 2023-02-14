@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cta.component.scss']
 })
 export class CtaComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {

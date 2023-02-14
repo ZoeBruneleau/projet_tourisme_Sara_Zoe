@@ -16,11 +16,12 @@ export class MapComponent implements OnInit {
     this.defineMap()
   }
 
-  defineMap(){
+  private defineMap():void{
 
     const myfrugalmap = L.map('frugalmap', {
         center: [46.227638, 2.213749], // France
         zoom: 6,
+        minZoom:6
       }
     );
 

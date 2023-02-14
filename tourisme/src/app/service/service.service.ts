@@ -2,11 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Tourisme} from "../mock/Tourisme";
 import {DomUtil} from "leaflet";
-import get = DomUtil.get;
 import {catchError, filter, Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
-import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
-import {User} from "../mock/User";
 import {Comment} from "../mock/comment";
 
 
@@ -18,25 +15,25 @@ export class ServiceService {
 
   constructor(private http:HttpClient) { }
 
-  public getAllLieu() {
+  public getAllLieu() :Observable<Tourisme[]>{
     return this.http.get<Tourisme[]>("/lieu");
   }
 
-  public getLieuId(id: string | null) {
+  public getLieuId(id: string | null) :Observable<Tourisme>{
     return this.http.get<any>("/lieu/"+id).pipe(map((resp) => {
       return resp.lieu
     }));
   }
 
-  public getComment() {
+  public getComment() :Observable<Comment[]> {
     return this.http.get<Comment[]>("/comment");
   }
 
-  public getCommentByLieuId(idl:number) {
+  public getCommentByLieuId(idl:number) :Observable<Comment[]>{
     return this.http.get<Comment[]>("/comment/"+idl);
   }
 
-  addComment(com:any): Observable<any>{
+  public addComment(com: any): Observable<Comment>{
       const headers = { 'content-type': 'application/json'}
       const body=JSON.stringify(com);
       return this.http.post<Comment>('/comment', body,{'headers':headers})

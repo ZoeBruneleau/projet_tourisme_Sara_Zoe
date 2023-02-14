@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Tourisme} from "../mock/Tourisme";
 import {ServiceService} from "../service/service.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-liste-lieu',
@@ -9,10 +9,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./liste-lieu.component.scss']
 })
 export class ListeLieuComponent implements OnInit {
-
-  public copie_list_lieu?:Tourisme[];
-  public list_lieu?:Tourisme[];
-
+  public list_lieu:Tourisme[]=[];
+  private copie_list_lieu:Tourisme[] = [];
   public searchForm = new FormGroup({
     search : new FormControl(''),
   })
@@ -20,7 +18,6 @@ export class ListeLieuComponent implements OnInit {
 
     this.service.getAllLieu()
       .subscribe((res) => {
-        console.log(res)
         this.list_lieu = res;
         this.copie_list_lieu = res;
       });
@@ -29,10 +26,9 @@ export class ListeLieuComponent implements OnInit {
   ngOnInit() {
 
   }
-  search(){
+  public search():void{
     let newlist = []
     let search = this.searchForm.value.search
-    let list_lieu;
     if (search != '') {
       let lieu: Tourisme = {comment: "", id: 0, image: "", latitude: 0, longitude: 0, name: "", ville: "", wiki: ""};
       for (let number in this.copie_list_lieu) {

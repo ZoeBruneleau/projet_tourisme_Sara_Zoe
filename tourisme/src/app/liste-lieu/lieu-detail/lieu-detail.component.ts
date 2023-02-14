@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ServiceService} from "../../service/service.service";
 import {Tourisme} from "../../mock/Tourisme";
-import {lastValueFrom} from "rxjs";
 import { Comment } from 'src/app/mock/comment';
 import {UserService} from "../../service/user.service";
 
@@ -13,38 +12,36 @@ import {UserService} from "../../service/user.service";
 })
 export class LieuDetailComponent implements OnInit {
 
-  public id?: string | null = ""
-  lieu: Tourisme | undefined
-  list_comment: Comment[] =[]
-  tab_number_etoile:number[]= []
-  tab_moyenne_note:number[]= []
-  like:boolean=false
+  private idLieu: string | null = ""
   private idUser:number =0;
+  public lieu: Tourisme | undefined
+  public list_comment: Comment[] =[]
+  private tab_number_etoile:number[]= []
+  public tab_moyenne_note:number[]= []
+  public like:boolean=false
   constructor(private router: Router, private route: ActivatedRoute, private service: ServiceService, private userservice: UserService) {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.idLieu = this.route.snapshot.paramMap.get('id');
     this.idUser = Number(localStorage.getItem("id"));
-    this.userservice.getUserList(String(this.idUser))
-    this.get_lieu(this.id)
-    this.getComments(this.id)
-    this.is_in_liste(localStorage.getItem("id"), this.id)
+    this.get_lieu()
+    this.getComments()
+    this.is_in_liste()
   }
 
   ngOnInit() {
 
   }
 
-  get_lieu(id: string | null){
-    this.service.getLieuId(id)
+  private get_lieu():void{
+    this.service.getLieuId(this.idLieu)
       .subscribe((res) => {
         this.lieu = res;
       });
   }
-
-  getComments(id: string | null){
+  private getComments():void{
     this.service.getComment()
       .subscribe((res) => {
         for(let comment in res){
-          if(res[comment].id_lieu ==Number(id)){
+          if(res[comment].id_lieu ==Number(this.idLieu)){
             this.list_comment.push(res[comment])
             res[comment].tab_note = Array(res[comment].note).fill(0);
             this.define_note(res[comment].note)
@@ -52,7 +49,8 @@ export class LieuDetailComponent implements OnInit {
         }
       });
   }
-  define_note(tab_note: number) {
+
+  private define_note(tab_note: number) :void{
     this.tab_number_etoile.push(tab_note)
     let somme = 0
     for (let i = 0; i < this.tab_number_etoile.length; i++) {
@@ -61,39 +59,36 @@ export class LieuDetailComponent implements OnInit {
     let moyenne = somme / this.tab_number_etoile.length
     this.tab_moyenne_note = Array(Math.round(moyenne)).fill(0);
   }
-  changeListeEnvie(idLieu: number){
-    let idUser = Number(localStorage.getItem("id"));
-    if(idUser == 0){
-      this.router.navigate(['/login/' ])
-    }
-    else{
-      if(this.userservice.not_in_liste(idUser, Number(idLieu))){
-        this.userservice.addLieuList(idUser, Number(idLieu)).subscribe(data => {
-          console.log(data)
-        })
-        this.like=true
-      }
-      else {
-        console.log("in liste")
-      }
-    }
-  }
-
-  private is_in_liste(id: string | null, idLieu: string | null) {
+  private is_in_liste() :void {
     let list
-    this.userservice.getList(id).subscribe((res) => {
+    this.userservice.getList(String(this.idUser)).subscribe((res) => {
       list = res;
       list.forEach((value: { idL: any; }) =>{
-        if (value.idL==Number(idLieu)){
+        console.log(value.idL, Number(this.idLieu))
+        if (value.idL==Number(this.idLieu)){
           this.like=true
         }
       });
     });
   }
 
-  public addComment(idLieu: number){
+  public changeListeEnvie():void{
+    if(this.idUser == 0){
+      this.router.navigate(['/login/' ])
+    }
+    else{
+      if(this.userservice.not_in_liste(this.idUser, Number(this.idLieu))){
+        this.userservice.addLieuList(this.idUser, Number(this.idLieu)).subscribe(data => {
+          console.log(data)
+        })
+        this.like=true
+      }
+
+    }
+  }
+  public addComment():void{
     if(this.idUser != 0){
-      this.router.navigate(['/add_comment/'+idLieu ])
+      this.router.navigate(['/add_comment/'+this.idLieu ])
     }
     else{
       this.router.navigate(['/login/' ])
