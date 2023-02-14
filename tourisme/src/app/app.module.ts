@@ -25,6 +25,7 @@ import {MatInputModule} from "@angular/material/input";
 
 import { AddCommentComponent } from './liste-lieu/lieu-detail/add-comment/add-comment.component';
 import { TopComponent } from './top/top.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { TopComponent } from './top/top.component';
 
     AddCommentComponent,
      TopComponent,
+     NotFoundComponent,
 
   ],
   imports: [

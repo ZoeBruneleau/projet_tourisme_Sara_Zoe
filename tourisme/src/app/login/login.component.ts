@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  userLogin() {
-
+  public userLogin() : void{
     this.authService.userLogin(this.loginForm.value)
       .subscribe(
         (value) => {
@@ -61,7 +60,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  public checkmail() {
+  private checkmail() : void {
     let m = this.loginForm.get('mail')?.value;
     let mdp = this.loginForm.get('mdp')?.value as string
     this.serviceUser.getUserConfig()
@@ -77,7 +76,6 @@ export class LoginComponent implements OnInit {
 
           } else {
             alert("mdp ou adresse mail incorecte(s)");
-            // erreur pas le bon mdp ou mail
           }
           this.serviceUser.currUser = this.currUser;
         } else {
@@ -85,9 +83,6 @@ export class LoginComponent implements OnInit {
         }
       });
   }
-
-
-
 
 }
 

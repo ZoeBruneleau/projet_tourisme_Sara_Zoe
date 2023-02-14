@@ -23,7 +23,7 @@ export class AddCommentComponent implements OnInit {
   constructor(private route: ActivatedRoute, private service: ServiceService,private userservice: UserService, private router :Router) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.userservice.getUserById(localStorage.getItem("id")).subscribe((res) => {
-      this.com = res;
+      this.com.pseudo = res.pseudo;
     });
   }
   ngOnInit(): void {

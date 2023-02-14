@@ -19,11 +19,25 @@
   text-decoration: none;
 }
 
+.center{
+  text-align:center;
+  color: #57bf74;
+  margin-top: 50px;
+}
+
+p{
+  color : black;
+}
 
 .img{
   width : 270px;
-  border-radius: 5px;
+  border-radius: 3px;
 
+}
+
+.header{
+  text-align: center;
+ padding-top: 100px;
 }
 
 .no-gutter > [class*='col-'] {
