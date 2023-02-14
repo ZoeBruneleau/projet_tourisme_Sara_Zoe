@@ -12,10 +12,10 @@
     <div class="card-group ">
 
       <div *ngFor=" let data of list_lieuNote.slice(0,5) ;let indexOfelement=index; " class=" w-100 row no-gutter">
-      <div class="col-md-3 col-sm-2">
+      <div class="col-md-3 col-sm-12">
             <h4 class="title">  {{indexOfelement + 1}} </h4>
       </div>
-        <div  class="card flex-row mb-5 col-md-8 col-sm-10">
+        <div  class="card flex-row mb-5 col-md-9 col-sm-12">
           <img class=" img " src="{{data.image}}" alt="Card image cap">
 
           <a class="not_a" href="/lieu/{{data.id}}/">

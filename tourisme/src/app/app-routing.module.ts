@@ -26,7 +26,7 @@ const routes: Routes = [
   { path : 'login', component: LoginComponent },
   { path : 'add_comment/:id', component: AddCommentComponent },
   { path : 'top5', component: TopComponent },
-  { path : '', redirectTo :'home'},
+  { path : '', redirectTo :'home',pathMatch:"full"},
   { path : '**', component:NotFoundComponent }
   ]
 

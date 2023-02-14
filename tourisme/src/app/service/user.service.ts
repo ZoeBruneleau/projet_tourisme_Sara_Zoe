@@ -5,7 +5,7 @@ import {BehaviorSubject, catchError, Observable, Subscription} from "rxjs";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {Tourisme} from "../mock/Tourisme";
-import {Liste} from "../mock/Liste";
+import {Liste} from "../Liste";
 
 
 @Injectable({
