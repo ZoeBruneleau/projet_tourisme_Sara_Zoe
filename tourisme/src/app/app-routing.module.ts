@@ -27,8 +27,8 @@ const routes: Routes = [
   { path : 'add_comment/:id', component: AddCommentComponent },
   { path : 'top5', component: TopComponent },
   { path : '', redirectTo :'home',pathMatch:"full"},
-  { path : '**', component:NotFoundComponent };
-  ]
+  { path : '**', component:NotFoundComponent }
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
