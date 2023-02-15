@@ -15,7 +15,7 @@ export class AddCommentComponent implements OnInit {
   public com = new Comment();
   public commentForm = new FormGroup({
     pseudo : new FormControl('', Validators.required),
-    note : new FormControl('', [Validators.required, Validators.max(5)]),
+    note : new FormControl('', [Validators.required, Validators.max(5), Validators.min(0)]),
     comment : new FormControl('', Validators.required),
     id_lieu:new FormControl(this.route.snapshot.paramMap.get('id')),
   })
