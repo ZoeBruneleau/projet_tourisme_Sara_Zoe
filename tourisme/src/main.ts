@@ -155,34 +155,34 @@ createServer({
           "id": 1,
           "id_lieu":1,
           "pseudo":"saraelallouche",
-          "comment":"belle visite",
+          "comment":"Trés belle Abbaye",
           "note": 2
         },
         {
           "id": 2,
           "id_lieu":1,
-          "pseudo":"saraelallouche",
-          "comment":"nouvelle belle visite",
+          "pseudo":"zoebruneleau",
+          "comment":"Magnifique bâtiment",
           "note": 3
         },
         {
           "id": 3,
           "id_lieu":2,
           "pseudo":"saraelallouche",
-          "comment":"autre belle visite",
+          "comment":"belle visite",
           "note": 4
         },
         {
           "id": 4,
           "id_lieu":4,
-          "pseudo":"saraelallouche",
-          "comment":"autre belle visite",
+          "pseudo":"zoebruneleau",
+          "comment":"belle visite",
           "note": 3
         },{
           "id": 7,
           "id_lieu":4,
           "pseudo":"saraelallouche",
-          "comment":"autre belle visite",
+          "comment":"Magnifique lieu",
           "note": 1
         },
 
@@ -190,35 +190,35 @@ createServer({
           "id": 8,
           "id_lieu":10,
           "pseudo":"saraelallouche",
-          "comment":"autre belle visite",
+          "comment":"belle visite",
           "note": 3
         },
         {
           "id": 9,
           "id_lieu":10,
-          "pseudo":"saraelallouche",
-          "comment":"autre belle visite",
+          "pseudo":"zoebruneleau",
+          "comment":"L'arc de triomphe est un monument à voir absolument",
           "note": 5
         },
         {
           "id": 10,
           "id_lieu":12,
-          "pseudo":"saraelallouche",
-          "comment":"autre belle visite",
+          "pseudo":"zoebruneleau",
+          "comment":"Trés beau",
           "note": 5
         },
         {
           "id": 11,
           "id_lieu":11,
           "pseudo":"saraelallouche",
-          "comment":"autre belle visite",
+          "comment":"Un petit peu déçu",
           "note": 1
         },
         {
           "id": 12,
           "id_lieu":12,
           "pseudo":"saraelallouche",
-          "comment":"autre belle visite",
+          "comment":"Trés beau monument",
           "note": 3
         },
 
