@@ -35,7 +35,7 @@ export class AccountEditComponent implements OnInit {
 
   })
 
-  save() : void{
+  public save() : void{
 
     this.service.edit(this.editForm.getRawValue(), this.id);
 
