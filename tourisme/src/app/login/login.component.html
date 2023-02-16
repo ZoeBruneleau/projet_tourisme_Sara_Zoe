@@ -1,4 +1,3 @@
-
 <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -7,48 +6,35 @@
           <div class="row g-0">
             <div class="col-lg-6">
               <div class="card-body p-md-5 mx-md-4">
-
                 <div class="text-center">
-
                   <h4 class="title">Connexion</h4>
                 </div>
-
                 <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
-
-                    <div class="col-md-10 mb-5">
-                      <label for="prenom" class="form-label">Adresse mail</label>
-                      <input [(ngModel)]="mail" type="email" formControlName="mail" class="input-text" id="prenom" placeholder="nom@domain.com" required>
-                    </div>
-                    <div class="col-md-10 mb-5">
-                      <label for="nom" class="form-label"> Mot de passe</label>
-                      <input [(ngModel)]="mdp" type="password" formControlName="mdp" class="input-text" id="nom" placeholder="***" required>
-                    </div>
-
-
-
+                  <div class="col-md-10 mb-5">
+                    <label for="prenom" class="form-label">Adresse mail</label>
+                    <input [(ngModel)]="mail" type="email" formControlName="mail" class="input-text" id="prenom" placeholder="nom@domain.com" required>
+                  </div>
+                  <div class="col-md-10 mb-5">
+                    <label for="nom" class="form-label"> Mot de passe</label>
+                    <input [(ngModel)]="mdp" type="password" formControlName="mdp" class="input-text" id="nom" placeholder="***" required>
+                  </div>
                   <div class="mb-3 text-center">
-
-                  <input type="submit" class="btn"  value="Connexion"  >
-              </div>
-
+                    <input type="submit" class="btn"  value="Connexion"  >
+                  </div>
                 </form>
-
               </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
               <div class="text-white px-3 py-4 p-md-5 mx-md-4 ">
-
                 <h4 class="mb-4">Accéder à mon compte</h4>
-                <ul >
+                <ul>
                   <li >Gérer mes informations</li>
                   <li >Créer des listes d'envie</li>
                   <li >Apporte des avis</li>
-
                 </ul>
-
                 <h5 class="mb-2 mt-5">Vous n'avez pas encore de Compte ? <br> </h5>
                 <div class="m-2">
-                <a class=" m-4 text-light" href="subcribe"> Rejoignez nous !</a>
+                  <a class=" m-4 text-light" href="subcribe"> Rejoignez nous !</a>
                 </div>
               </div>
             </div>

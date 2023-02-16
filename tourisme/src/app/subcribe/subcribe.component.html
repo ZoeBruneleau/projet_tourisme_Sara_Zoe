@@ -1,7 +1,6 @@
 <div class="bg-light py-5 mt-4">
   <div class="contenu mx-auto py-2 w-75">
     <form class="form-goup " [formGroup]="subcribeForm" (ngSubmit)="save()" >
-
       <h1 class="title ">Inscription</h1>
       <div class="container w-75  justify-content-center mt-5 mb-5 ">
         <div class="row">
@@ -9,52 +8,36 @@
             <label for="nom" class="form-label">Nom*</label>
             <input type="text" formControlName="name" class="input-text" id="nom" placeholder="nom" required>
           </div>
-
-
           <div class="col-md-6 mb-3">
             <label for="prenom" class="form-label">Prénom*</label>
             <input type="email" formControlName="firstName" class="input-text" id="prenom" placeholder="prénom" required>
           </div>
         </div>
-
         <div class="row">
-
-
           <div class="col-md-6 mb-3">
             <label for="prenom" class="form-label">Ville*</label>
             <input type="email" formControlName="ville" class="input-text" id="ville" placeholder="Paris" required>
           </div>
-
           <div class="col-md-6 mb-3">
             <label for="nom" class="form-label">Code postal*</label>
             <input type="number" formControlName="CP" class="input-text" id="CP" placeholder="75005" min="1000"
                    max="97680" required>
           </div>
-
-
         </div>
-
-
         <div class="row">
-
           <div class="col-md-6 mb-3">
             <label for="email" class="form-label">Email*</label>
             <input class="input-text" formControlName="mail" id="email" placeholder="name@gmail.com" required>
           </div>
-
           <div class="col-md-6 mb-3">
             <label for="mdp" class="form-label">Mot de passe*</label>
             <input type="password" [(ngModel)]="mdp" formControlName="mdp" class="input-text" id="mdp" placeholder="***" required>
           </div>
         </div>
-
         <div class="col-md-6 mb-3">
           <label for="mdp" class="form-label">Vérifier le Mot de passe*</label>
           <input type="password" [(ngModel)]="mdp2"  formControlName="mdp2" class="input-text" id="mdp2" placeholder="***" required>
         </div>
-
-
-
         <div class="col-md-10 mt-3 mb-5 form-check">
           <input class="form-check-input" formControlName="cgu" type="checkbox" value="" id="flexCheckDefault" ngModel required>
           <label class="form-check-label" for="flexCheckDefault">
@@ -65,12 +48,7 @@
           <input  [disabled]="subcribeForm.invalid" type="submit" class="btn" value="Inscription">
         </div>
       </div>
-
-
-
-
     </form>
-
   </div>
 </div>
 

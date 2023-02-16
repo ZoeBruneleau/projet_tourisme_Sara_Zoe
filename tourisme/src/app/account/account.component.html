@@ -1,67 +1,45 @@
 <div class="bg-light mt-4">
-<div class="container  py-5 ">
-  <div class="row">
-    <h1 class="pb-3 text-uppercase text-center color_green">Mon compte</h1>
-
-    <div class="col-lg-4 col-xl-4">
-      <div class="card-box " *ngIf="currUser">
-
-        <h4 class="mb-0 text-center"><span class="text-uppercase">{{currUser.name}}</span> {{currUser.firstName}}</h4>
-        <div class="py-3 text-center">
-          <a class="color_green px-2 " href="/account_edit" >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icons">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-          </svg>
-          </a>
-          <a class="text-danger" href="#" (click)="logout()">
-            <img class="img"  src="../../assets/images/deco.png" >
-          </a>
+  <div class="container  py-5 ">
+    <div class="row">
+      <h1 class="pb-3 text-uppercase text-center color_green">Mon compte</h1>
+      <div class="col-lg-4 col-xl-4">
+        <div class="card-box " *ngIf="currUser">
+          <h4 class="mb-0 text-center"><span class="text-uppercase">{{currUser.name}}</span> {{currUser.firstName}}</h4>
+          <div class="py-3 text-center">
+            <a class="color_green px-2 " href="/account_edit" >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icons">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+              </svg>
+            </a>
+            <a class="text-danger" href="#" (click)="logout()">
+              <img class="img"  src="../../assets/images/deco.png" >
+            </a>
+          </div>
+          <div class="text-left mt-3">
+            <h4 class="font-13 text-uppercase text-center">Mes informations :</h4>
+            <p class="text-muted mb-2 font-13"><strong>Nom : </strong> <span class="ml-2">{{currUser.name}}</span></p>
+            <p class="text-muted mb-2 font-13"><strong>Prénom : </strong> <span class="ml-2">{{currUser.firstName}}</span></p>
+            <p class="text-muted mb-2 font-13"><strong>Pseudo : </strong> <span class="ml-2">{{currUser.pseudo}}</span></p>
+            <p class="text-muted mb-2 font-13"><strong>Email : </strong> <span class="ml-2">{{currUser.mail}}</span></p>
+            <p class="text-muted mb-2 font-13"><strong>Localisation : </strong> <span class="ml-2">{{currUser.ville}}</span></p>
+            <p class="text-muted mb-2 font-13"><strong>Code postal : </strong> <span class="ml-2">{{currUser.CP}}</span></p>
+          </div>
         </div>
-        <div class="text-left mt-3">
-          <h4 class="font-13 text-uppercase text-center">Mes informations :</h4>
-
-          <p class="text-muted mb-2 font-13"><strong>Nom : </strong> <span class="ml-2">{{currUser.name}}</span></p>
-          <p class="text-muted mb-2 font-13"><strong>Prénom : </strong> <span class="ml-2">{{currUser.firstName}}</span></p>
-          <p class="text-muted mb-2 font-13"><strong>Pseudo : </strong> <span class="ml-2">{{currUser.pseudo}}</span></p>
-          <p class="text-muted mb-2 font-13"><strong>Email : </strong> <span class="ml-2">{{currUser.mail}}</span></p>
-          <p class="text-muted mb-2 font-13"><strong>Localisation : </strong> <span class="ml-2">{{currUser.ville}}</span></p>
-          <p class="text-muted mb-2 font-13"><strong>Code postal : </strong> <span class="ml-2">{{currUser.CP}}</span></p>
-        </div>
-      </div> <!-- end card-box -->
-
-
-    </div> <!-- end col-->
-
-    <div class="col-lg-8 col-xl-8">
-      <div class="card-box">
-
-
-        <div class="tab-content">
-
-          <div class="tab-pane show active" id="about-me">
-
-            <h5 class="mb-4 text-uppercase" *ngIf="list" >Ma liste d'envie <img class="img"  src="../../assets/images/heart.png" > </h5>
-
-            <div class="list-group"   *ngFor=" let data of list "style="width: 100%;">
-
+      </div>
+      <div class="col-lg-8 col-xl-8">
+        <div class="card-box">
+          <div class="tab-content">
+            <div class="tab-pane show active" id="about-me">
+              <h5 class="mb-4 text-uppercase" *ngIf="list" >Ma liste d'envie <img class="img"  src="../../assets/images/heart.png" > </h5>
+              <div class="list-group"   *ngFor=" let data of list "style="width: 100%;">
                 <a  class="not_a list-group-item list-group-item-action"  href="/lieu/{{data.id}}/">
-<!--                  <img class="img_lieu"  src="{{data.image}}" alt="">-->
-
                   {{data.name}}, {{data.ville}}
                 </a>
-
-
+              </div>
             </div>
-
           </div>
-          <!-- end timeline content-->
-
-          <!-- end settings content-->
-
-        </div> <!-- end tab-content -->
-      </div> <!-- end card-box-->
-
-    </div> <!-- end col -->
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </div>

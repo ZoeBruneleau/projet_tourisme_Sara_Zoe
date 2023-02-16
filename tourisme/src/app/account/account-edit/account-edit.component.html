@@ -9,48 +9,33 @@
             <label for="nom" class="form-label">Nom*</label>
             <input type="text" ngModel="{{user.firstName}}" formControlName="name" class="input-text" id="nom" placeholder="nom" required>
           </div>
-
-
           <div class="col-md-4 mb-3">
             <label for="prenom" class="form-label">Prénom*</label>
             <input type="email" ngModel="{{user.name}}" formControlName="firstName" class="input-text" id="prenom" placeholder="prénom" required>
           </div>
         </div>
-
         <div class="row">
-
-
           <div class="col-md-5 mb-3">
             <label for="prenom" class="form-label">Ville*</label>
             <input type="email" ngModel="{{user.ville}}" formControlName="ville" class="input-text" id="ville" placeholder="Paris" required>
           </div>
-
           <div class="col-md-4 mb-3">
             <label for="nom" class="form-label">Code postal*</label>
             <input type="number" formControlName="CP" ngModel="{{user.CP}}" class="input-text" id="CP" placeholder="75005" min="1000"
                    max="97680" required>
           </div>
-
-
         </div>
-
         <div class="row">
-
           <div class="col-md-6 mb-3">
             <label for="email" class="form-label">Email*</label>
             <input class="input-text" formControlName="mail" ngModel="{{user.mail}}" id="email" placeholder="name@gmail.com" required>
           </div>
-
-        <div class="text-center">
-          <input  [disabled]="editForm.invalid" type="submit" class="btn" value="Modifier">
+          <div class="text-center">
+            <input  [disabled]="editForm.invalid" type="submit" class="btn" value="Modifier">
+          </div>
         </div>
       </div>
-
-
-
-</div>
     </form>
-
   </div>
 </div>
 

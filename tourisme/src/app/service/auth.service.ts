@@ -17,7 +17,6 @@ export class AuthService {
   constructor(private http:HttpClient, private router :Router) {}
 
   public userLogin(login:any):Observable<boolean>{
-
     if(login &&
       login.mail &&
       login.mdp) {
@@ -42,15 +41,12 @@ export class AuthService {
     return of(false);
 
   }
-
   public log(mail : string, mdp :string) : Subscription {
     this.router.navigate(['/home']);
     return this.http.post('/login',{mail,mdp} ).subscribe((res: any) => {
 
     })
   };
-
-
   public logout() : void{
     this.router.navigate(['/home']).then(r => "");
     localStorage.clear();

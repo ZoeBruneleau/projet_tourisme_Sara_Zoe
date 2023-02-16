@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Tourisme} from "../mock/Tourisme";
-import {DomUtil} from "leaflet";
-import {catchError, filter, Observable, of} from "rxjs";
+import {catchError, Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Comment} from "../mock/comment";
 
